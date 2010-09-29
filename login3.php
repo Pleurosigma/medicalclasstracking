@@ -15,7 +15,7 @@
 				die("PID or ClassCode null");
 			}
 			
-			$con = mysql_connect("localhost", "root", "!mrfrosty0");
+			$con = mysql_connect("localhost", "root", "password");
 			if(!$con){
 				die('Lost database connection: ' . mysql_error());
 			}
