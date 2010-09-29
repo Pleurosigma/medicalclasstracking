@@ -1,0 +1,260 @@
+<html>
+<head>
+<title>Capstone</title>
+
+<!--Modified code, originally written by COBOLdinosaur on snippets.dzone.com, "Expand and collapse effect for data grids"-->
+<script type="text/javascript"> 
+    var ELpntr=false;
+    function hideall() {
+        locl = document.getElementsByName('schedule');
+        for (i=0;i<locl.length;i++) {
+            locl[i].style.display='none';
+        }
+    }
+
+    function showHide(EL,PM)
+    {
+        ELpntr=document.getElementById(EL);
+        if (ELpntr.style.display=='none')
+        {
+            document.getElementById(PM);
+            ELpntr.style.display='block';
+        }
+        else
+        {
+            document.getElementById(PM);
+            ELpntr.style.display='none';
+        }
+    }
+    onload=hideall;
+</script>
+
+<style type="text/css">
+        body {
+		background: #FFFFFF;
+        }
+        
+        #header {
+                background: url(gradient2.jpg);
+                background-size: 100%;
+                width: 100%;
+                border-collapse: separate:
+        } 
+
+	#tabmenu {
+                background-color: #003254;
+		border: 0px solid black;
+		z-index: 1;
+		padding: 0px 0px 4px 59px;
+                margin: -1px 0px 0px 0px;
+        }
+
+	#tabmenu li {
+		display: inline;
+		overflow: hidden;
+		list-style-type: none;
+        }
+        
+        #tabmenu a, a:visited {
+                font: normal 12px georgia;
+                color: #FFFFFF;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                text-decoration: none;
+                background: #103d66;
+                opacity: 0.8;
+                padding: 5px 6px 5px 6px;
+                margin: 0px 1px 0px 1px;
+        }
+	
+	#tabmenu a.active {
+                color: #003254;
+                background: #FFFFFF;
+        }
+        
+        #tabmenu a:hover {
+                color: #cfd9e3;
+        }
+        
+        #tabmenu a.active:hover {
+                color: #003254;
+        }
+
+	#content {
+                font: normal 13px 'times new roman';
+                color: #103d66;
+		text-align: justify;
+		background: url(gradient3.jpg);
+                background-repeat:repeat-x;
+                opacity: 0.8;
+		padding: 25px;
+		border: 0px solid #103d66;
+		z-index: 2;	
+        }
+
+        label {
+                font-size: 14px;
+                text-transform: uppercase;
+                text-align: right;
+                margin: 6px 8px 0px 0px;
+                width: 110px;
+                float: left;
+        }
+        
+        input {                
+                font: 15px arial;
+                text-align: right;
+                letter-spacing: 1px;
+        }
+        
+        #ID {
+                margin-bottom: 2px;
+        }
+        
+        #password {
+                margin-top: 2px;
+        }
+    
+        #button {
+                color: #103d66;
+                margin-left: 5px;
+        }
+                
+        #adminreport {
+                font: inherit;
+                color: #003254;
+                border: 0px;
+                border-collapse: separate;
+                width: 100%;
+        }
+        
+        #adminreport th {
+                font: 600 12px georgia;
+                color: #cfd9e3;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-align: left;
+                background: url(gradient2.jpg);
+                background-size: 100%;
+                border: 1px solid #103d66;
+                padding: 2px;
+        }
+        
+        #adminreport td {
+                background: #cfd9e3;
+                border: 1px solid #103d66;
+                padding: 2px;
+        }
+                
+        #admin {
+                font-weight: bold;
+        }
+        
+        #pid {
+                width: 20%;
+        }
+        
+        #name {
+                width: 60%;
+        }
+        
+        #hours {
+                text-align: right;
+                width: 20%;
+        }
+        
+        #content a, a:link, a:active, a:visited {
+                color: #003254;
+                text-decoration: none;
+        }
+        
+        #content a:hover {
+                font-weight: bold;
+        }
+        
+        table.schedule {
+                font: normal 10px arial;
+                color: #003254;
+                width: 80%;
+                margin-left: 20%;
+                margin-top: 4px;
+                margin-bottom: 4px;
+        }
+        
+        table.schedule th {
+                font: 500 10px georgia;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-align: left;
+                background-color: #FFFFFF;
+                border: 1px solid #103d66;
+                padding: 2px;
+        }
+        
+        table.schedule td {
+                border: 1px solid #cfd9e3;
+        }
+        
+        #schedhours {
+                text-align: right;
+        }
+
+	</style>
+</head>
+
+<body>
+    
+<table id="header">
+    <tr valign='top'>
+        <td><img src='file:///Users/HBPYJAMA/University/2010-2011/COMP523/somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a href="testheader2.html">Student</a></li>
+    <li><a class="active" href="testheader2-more.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+
+<table id="adminreport">
+    <tr>
+        <td id="admin">Dr. Ana Felix</td>
+    </tr>
+    <tr class="vis">
+        <th id="pid">PID</th>
+        <th id="name">Student name</th>
+        <th id="hours">Hours</th>
+    </tr>
+</table>
+
+<table id="adminreport">
+    <tr class="vis">
+        <td id="pid">432156789</td>
+        <td id="name"><a href="#" onclick="showHide('sched','schedspan')"><span id="schedspan">Student 1</span></td>
+        <td id="hours">3</td>
+    </tr>
+    <table id="sched" class="schedule" name="schedule">
+        <tr><th>Code</th><th>Session(s) attended</th><th>Faculty</th><th>Date and time</th><th>Credit hours</th>
+        <tr><td>INTRON&B</td><td>Introduction & Nuts and Bolts</td><td>Dr. Ana Felix</td><td>03-01-2010, M 8AM-9AM</td><td id="schedhours">1</td></tr>
+        <tr><td>MLAHCBL/AD</td><td>Medico-Legal Aspects of Healthcare: Case Based Learning/Alcohol Detox</td><td>Dr. Ben Gilbert</td><td>03-01-2010, M 10AM-12PM</td><td id="schedhours">2</td></tr>
+    </table>
+</table>
+
+<table id="adminreport">
+    <tr class="vis">
+        <td id="pid">987612345</td>
+        <td id="name"><a href="#" onclick="showHide('sched2','schedspan2')"><span id="schedspan2">Student 2</span></td>
+        <td id="hours">7</td>
+    </tr>
+    <table id="sched2" class="schedule" name="schedule">
+        <tr><th>Code</th><th>Session(s) attended</th><th>Faculty</th><th>Date and time</th><th>Credit hours</th>
+        <tr><td>INTRON&B</td><td>Introduction & Nuts and Bolts</td><td>Dr. Ana Felix</td><td>03-01-2010, M 8AM-9AM</td><td id="schedhours">1</td></tr>
+        <tr><td>LANDM</td><td>Literature and Medicine</td><td>Dr. Elizabeth Dreesen</td><td>03-05-2010, F 1230PM-130PM</td><td id="schedhours">6</td></tr>
+    </table>
+</table>
+
+</div>
+
+</body>
+</html>
