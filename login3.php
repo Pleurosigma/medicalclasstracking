@@ -1,4 +1,8 @@
 <?php
+	/**
+	Author: Logan Wilkerson
+	This is the class varification page
+	*/
 	$classCode = $_POST['classCode'];
 	setcookie("classCode", $classCode, time() + 3600);
 ?>

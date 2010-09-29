@@ -1,4 +1,8 @@
 <?php
+	/**
+	Author: Logan Wilkerson
+	This is the second page the user will see after loging in
+	*/
 	//sets the PID in a cookie so it can be remembered
 	$pid = $_POST["pid"];
 	if($pid != null){
