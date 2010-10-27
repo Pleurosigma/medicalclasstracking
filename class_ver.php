@@ -32,9 +32,24 @@ A page to add the class to the database and verify it back to the user;
 	//Get Post Values
 	include("db_class_functions.php");
 	$className = $_POST["classname"];
-	$date = $_POST["date"];
-	$startTime = $_POST["starttime"];
-	$endTime = $_POST["endtime"];
+	$year = $_POST["year"];
+	$month = $_POST["month"];
+	$day = $_POST["day"];
+	$date = $year . "-" . $month . "-" . $day;
+	$startHour = $_POST["starttimehr"];
+	$startMinute = $_POST["starttimemin"];
+	$startAM = $_POST["amstart"];
+	if($startAM != "True"){
+		$startHour = (int)$startHour + 12;
+	}
+	$startTime = $startHour . ":" . $startMinute;
+	$endHour = $_POST["endtimehr"];
+	$endMinute = $_POST["endtimemin"];
+	$endAM = $_POST["endam"];
+	if($endAM != "True"){
+		$endHour = (int)$endHour + 12;
+	}
+	$endTime = $endHour . ":" . $endMinute;
 	$credits = $_POST["credits"];
 	$faculty = $_POST["faculty"];
 	
