@@ -16,7 +16,7 @@
 	<body>
 	<?php	
 		//Connect to database
-		$con = mysql_connect("localhost", "root", "password");
+		$con = mysql_connect("localhost", "root", "!mrfrosty0");
 		if(!$con){
 			die('Could not connect: ' . mysql_error());
 		}
