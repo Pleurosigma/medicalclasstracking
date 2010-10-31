@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Capstone</title>
+
+<!--Modified code, originally written by COBOLdinosaur on snippets.dzone.com, "Expand and collapse effect for data grids"-->
+<script type="text/javascript"> 
+    var ELpntr=false;
+    function hideall() {
+        locl = document.getElementsByName('schedule');
+        for (i=0;i<locl.length;i++) {
+            locl[i].style.display='none';
+        }
+    }
+
+    function showHide(EL,PM)
+    {
+        ELpntr=document.getElementById(EL);
+        if (ELpntr.style.display=='none')
+        {
+            document.getElementById(PM);
+            ELpntr.style.display='block';
+        }
+        else
+        {
+            document.getElementById(PM);
+            ELpntr.style.display='none';
+        }
+    }
+    onload=hideall;
+</script>
+
+<link rel="stylesheet" type="text/css" href="default.css">
+
+</head>
+
+<body>
+    
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a href="index.html">Student</a></li>
+    <li><a class="active" href="adminreport.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+
+<!--Search for hours, search for student by name or PID-->
+<div id="addsearch"><form align="right">
+    <select style="color: color: #103d66;"><option>Student name</option><option>Student PID</option><option>Student hours</option><option>Student hours less than or equal to</option><option>Student hours greater than or equal to</option></select>
+    <input type="text" id="addsearchtext">&nbsp;<input type="submit" value="SEARCH" id="addsearchbutton">
+</form></div>
+
+<br>
+<table id="adminreport">
+    <tr>
+        <td id="admin">Dr. Ana Felix</td>
+    </tr>
+    <tr class="vis">
+        <th id="pid">PID</th>
+        <th id="name">Student name</th>
+        <th id="hours">Hours</th>
+    </tr>
+</table>
+
+<table id="adminreport">
+    <tr class="vis">
+        <td id="pid">432156789</td>
+        <td id="name"><a href="#" onclick="showHide('hiddensched','schedspan')"><span id="schedspan">Hanna Palmerton</span></td>
+        <td id="hours">1</td>
+    </tr>
+    <table id="hiddensched" class="schedule" name="schedule">
+        <tr><th>Code</th><th>Session(s) attended</th><th>Faculty</th><th>Date and time</th><th>Credit hours</th>
+        <tr><td>INTRON&B</td><td>Introduction & Nuts and Bolts</td><td>Dr. Ana Felix</td><td id="allcaps">03-01-2010, Monday 8am-9am</td><td id="schedhours">1</td></tr>
+    </table>
+</table>
+
+</div>
+
+</body>
+</html>
