@@ -2,14 +2,29 @@ function validate(txt, fieldTitle, fieldName){
 	if(fieldTitle == undefined){
 		return true;
 	}
-	var iChars = "\"!@#$%^&*()+=-[]{}\';,/|<>?";
+	var iChars = "\\\"[]{}|~`!@#$%^&*()-_+=:;'<>,.?/";
 	if(txt == null || txt == ""){
 		alert(fieldTitle + " must be filled out.");
 		return false;
 	}
 	if(fieldName == "date"){
-		iChars = "\"!@#$%^&*()+=[]{}\';,/|<>?";
 //		VALIDATE DATE SYNTAX
+	}
+	if(fieldName == "password"){
+		iChars = iChars.replace('!',"");
+		iChars = iChars.replace('@',"");
+		iChars = iChars.replace('#', "");
+		iChars = iChars.replace('$', "");
+		iChars = iChars.replace('%', "");
+		iChars = iChars.replace('&', "");
+		iChars = iChars.replace('*', "");
+		iChars = iChars.replace('+', "");
+		iChars = iChars.replace('=', "");
+		iChars = iChars.replace('{}', "");
+		iChars = iChars.replace('?', "");
+		iChars = iChars.replace('<>', "");
+		iChars = iChars.replace("'", "");
+		iChars = iChars.replace('"', "");
 	}
 	if(fieldName == "credits"){
 		if(isNaN(txt)){
