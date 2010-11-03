@@ -61,7 +61,7 @@
 				}
 			}
 			$time_split[0] = $hour;
-			
+			$time_split = TM::formatTime($time_split);
 			//Reform the String
 			$new_time = '';
 			foreach($time_split as $piece){
@@ -113,7 +113,7 @@
 				$hour = $hour - 12;
 			}
 			$time_split[0] = $hour;
-			
+			$time_split = TM::formatTime($time_split);
 			$new_time = '';
 			foreach($time_split as $piece){
 				$new_time = $new_time . $piece . $SEP;
@@ -122,6 +122,16 @@
 			$result_array = array($new_time, $am_pm);
 			return $result_array;
 		}
+		
+		private static function formatTime($time_split){
+			foreach($time_split as &$piece){
+				if($piece < 10 && strlen(strval($piece)) < 2){
+					$piece = '0' . $piece;
+				}
+			}
+			return $time_split;
+		}
+		
 	}
 
 ?>
