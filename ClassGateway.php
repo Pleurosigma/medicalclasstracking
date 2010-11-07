@@ -25,6 +25,15 @@
 		public static function selectClass($select){
 			return mysql_query($select);
 		}
+		
+		public static function selectClassByClassCode($ClassCode){
+			$select = "SELECT * FROM Classes WHERE ClassCode = '$ClassCode'";
+			$r = mysql_query($select);
+			if(!$val = mysql_fetch_array($r)){
+				return false;
+			}
+			return $val;
+		}
 
 		public static function getClassInsertQuery($ClassCode, $ClassName, $StartTime, $EndTime, $CreditHrs, $Faculty){
 			$insert = "INSERT INTO Classes VALUES ('" . $ClassCode . "','" . $ClassName . "','" . $StartTime . "','" . $EndTime . "'," . $CreditHrs . ",'" . $Faculty . "')";
