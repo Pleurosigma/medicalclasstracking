@@ -1,5 +1,15 @@
 <?php
 	class TM{
+		public static function getDayOfWeek($time){
+			$date = new DateTime($time);
+			return $date->format('D');
+		}
+		
+		public static function getStandardDateAndTime($time){
+			$date = new DateTime($time);
+			return $date->format('l jS \of F Y \a\t h:i:s A');
+		}
+		
 		private static function getSEP($time){
 			$time_array = str_split($time);
 			$SEP = false;
