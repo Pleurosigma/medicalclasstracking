@@ -2,6 +2,7 @@
 <!--
 Author: Logan Wilkerson
 A page to add a class into the database
+Update Nov 7, 2010: grace period stuff added
 -->
 <head>
 	<script type = "text/javascript"src="validate.js"></script>
@@ -22,7 +23,10 @@ A page to add a class into the database
 		<input type="radio" name="amend" value=True /> am
 		<input type="radio" name="amend" value=False /> pm</br>
 	Credits: <input type="text" name="credits" title="Credits" /> </br>
-	Faculty: <input type="text" name="faculty" title="Faculty" /> </br>	
+	Faculty: <input type="text" name="faculty" title="Faculty" /> </br>
+	Grace Period: <input type="radio" name="grace" title="Standard Grace" value="1" checked /> 15 Minutes 
+			     <input type="radio" name="grace" title="Day Grace" value="0" /> Same day until 8pm </br>
+	
 	<input type="submit" value="Enter" />
 	</form>
 </body>
