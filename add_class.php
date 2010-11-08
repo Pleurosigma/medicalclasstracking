@@ -20,8 +20,8 @@ Update Nov 7, 2010: grace period stuff added
 		<input type="radio" name="amstart" value=False /> pm</br>
 	End Time: <input type="text" name="endtimehr" title="End Time Hour" value = "hh" /> 
 			<input type="text" name="endtimemin" title="End Time Minute" value="mm" />
-		<input type="radio" name="amend" value=True /> am
-		<input type="radio" name="amend" value=False /> pm</br>
+		<input type="radio" name="amend" value="AM" /> am
+		<input type="radio" name="amend" value="PM" /> pm</br>
 	Credits: <input type="text" name="credits" title="Credits" /> </br>
 	Faculty: <input type="text" name="faculty" title="Faculty" /> </br>
 	Grace Period: <input type="radio" name="grace" title="Standard Grace" value="1" checked /> 15 Minutes 

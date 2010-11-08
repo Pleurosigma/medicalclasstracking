@@ -13,11 +13,11 @@
 		editClass
 		Edits a class in the database
 		*/
-//		public static function editClass($classCode, $className, $startTime, $endTime, $creditHrs, $faculty){
-//			ClassGateway::deleteClassByClassCode($classCode);
-//			$insert = ClassGateway::getClassInsertQuery($classCode, $className, $startTime, $endTime, $creditHrs, $faculty);
-//			return ClassGateway::insertClass($insert);
-//		}
+		public static function editClass($classCode, $className, $startTime, $endTime, $creditHrs, $faculty){
+			ClassGateway::deleteClassByClassCode($classCode);
+			$insert = ClassGateway::getClassInsertQuery($classCode, $className, $startTime, $endTime, $creditHrs, $faculty);
+			return ClassGateway::insertClass($insert);
+		}
 		
 		public static function insertClass($classCode, $className, $startTime, $endTime, $creditHrs, $faculty, $grace){
 			$insert = "INSERT INTO Classes VALUES ('$classCode', '$className', '$startTime', '$endTime', $creditHrs, '$faculty', $grace)";
