@@ -2,6 +2,7 @@
 <!--
 Author: Logan Wilkerson
 A page to add the class to the database and verify it back to the user;
+Update Nov 7, 2010: grace period stuff added.
 -->
 <head>
 <style type = "text/css">
@@ -30,7 +31,8 @@ A page to add the class to the database and verify it back to the user;
 	selectDB($con);
 	
 	//Get Post Values
-	include("db_class_functions.php");
+//	include("db_class_functions.php");
+	include("ClassGateway.php");
 	$className = $_POST["classname"];
 	$year = $_POST["year"];
 	$month = $_POST["month"];
@@ -52,6 +54,7 @@ A page to add the class to the database and verify it back to the user;
 	$endTime = $endHour . ":" . $endMinute;
 	$credits = $_POST["credits"];
 	$faculty = $_POST["faculty"];
+	$grace = (int)$_POST["grace"];
 	
 	//Smash the times together
 	$startTime = $date . " " . $startTime;
@@ -60,11 +63,10 @@ A page to add the class to the database and verify it back to the user;
 	$classCode = "";
 	$flag = true;
 	while($flag){	
-		$classCode = getClassCode($className);
-		$flag = isClassCodeRedundant($classCode);		
+		$classCode = ClassGateway::getClassCode($className);
+		$flag = ClassGateway::isClassCodeRedundant($classCode);		
 	}
-	$insert = getClassInsertQuery($classCode, $className, $startTime, $endTime, $credits, $faculty);
-	if(!insertClass($insert)){
+	if(!ClassGateway::insertClass($classCode, $className, $startTime, $endTime, $credits, $faculty, $grace)){
 		echo "There was an error.";
 	}
 	else{
@@ -77,6 +79,7 @@ A page to add the class to the database and verify it back to the user;
 		echo "<th>End Time</th>";
 		echo "<th>Credits</th>";
 		echo "<th>Faculty</th>";
+		echo "<th>Standard Grace</th>";
 		echo "</tr>";
 		echo "<tr>";
 		echo "<td>" . $classCode . "</td>";
@@ -85,6 +88,7 @@ A page to add the class to the database and verify it back to the user;
 		echo "<td>" . $endTime . "</td>";
 		echo "<td>" . $credits . "</td>";
 		echo "<td>" . $faculty . "</td>";
+		echo "<td>" . $grace . "</td>";
 		echo "</tr>";
 		echo "</table>";
 	}
