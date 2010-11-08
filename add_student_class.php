@@ -1,15 +1,21 @@
+<?php 
+	/**
+	Author: Logan Wilkerson
+	add_student_class.php
+	This class sets up the page for allowing a student to add a class to their
+	student list
+	*/
+	session_start();
+	include('db_connect.php');
+	include("LDAPHelper.php");
+	include('StudentClassGateway.php');
+	include('ClassGateway.php');
+	include('TM.php');
+?>
 <html>
 <head>
 	<title> Add Class </title>	
 	<script type = "text/javascript" src="validate.js"></script>
-	<?php 
-		session_start();
-		include('db_connect.php');
-		include("LDAPHelper.php");
-		include('StudentClassGateway.php');
-		include('ClassGateway.php');
-		include('TM.php');
-	?>
 	
 </head>
 <body>

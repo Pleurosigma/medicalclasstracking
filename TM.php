@@ -1,4 +1,9 @@
 <?php
+	/**
+	Author: Logan Wilkerson
+	TM.php
+	The TimeManipulator class. Allows formating of time strings.
+	*/
 	class TM{
 		public static function getDayOfWeek($time){
 			$date = new DateTime($time);

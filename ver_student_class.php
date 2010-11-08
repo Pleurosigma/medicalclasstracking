@@ -1,4 +1,10 @@
 <?php
+	/**
+	Author: Logan Wilkerson
+	ver_student_class.php 
+	Verifies that a students class can be added and checks with the student to see if it
+	should be added.
+	*/
 	session_start();
 	include('db_connect.php');
 	include('ClassGateway.php');
@@ -38,6 +44,7 @@
 		else{
 			$_SESSION['class'] = $class;
 			$inTime = TimeVerification::checkTime($_SESSION['class']['StartTime'], $_SESSION['class']['EndTime'], $_SESSION['class']['StandardGrace']);
+			//THIS VALUE SHOULD BE CHANGED TO $inTime when not testing the additoin features
 			if(1){
 				echo '
 					Are you sure you want to sign up for the class ' . $_SESSION['class']['ClassName'] . 

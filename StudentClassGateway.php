@@ -1,4 +1,9 @@
 <?php
+	/**
+	Author: Logan Wilkerson
+	StudentClassGateway.php
+	A class for interacting with the StudentClass table
+	*/
 	class StudentClassGateway {
 		public static function selectStudentClassesByOnyen($onyen){
 			$select = "SELECT * FROM StudentClasses WHERE Onyen = '$onyen'";
