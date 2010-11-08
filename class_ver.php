@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	include('db_connect.php');
+	include('TM.php');	
+	include("ClassGateway.php");
+?>
 <html>
 <!--
 Author: Logan Wilkerson
@@ -25,15 +31,18 @@ Update Nov 7, 2010: grace period stuff added.
 <body>
 <h3>Class Entry Verification</h3>
 <?php
+	if(isset($_SESSION['newclass'])){	
+		$resetflag = true;
+	}
+	else{
+		$resetflag = false;
+	}
 	//Set up db connection and select db
-	include("db_connect.php");
-	include("TM.php");
 	$con = getConnection();
 	selectDB($con);
 	
 	//Get Post Values
 //	include("db_class_functions.php");
-	include("ClassGateway.php");
 	$className = $_POST["classname"];
 	$year = $_POST["year"];
 	$month = $_POST["month"];
@@ -79,7 +88,10 @@ Update Nov 7, 2010: grace period stuff added.
 		$classCode = ClassGateway::getClassCode($className);
 		$flag = ClassGateway::isClassCodeRedundant($classCode);		
 	}
-	if(!ClassGateway::insertClass($classCode, $className, $startTime, $endTime, $credits, $faculty, $grace)){
+	if($resetflag){		
+		echo 'Page refresh detected. I\'m just gonna stop now.</br>';	
+	}
+	elseif(!ClassGateway::insertClass($classCode, $className, $startTime, $endTime, $credits, $faculty, $grace)){
 		echo "There was an error.";
 	}
 	else{
@@ -104,6 +116,7 @@ Update Nov 7, 2010: grace period stuff added.
 		echo "<td>" . $grace . "</td>";
 		echo "</tr>";
 		echo "</table>";
+		$_SESSION['newclass'] = 'omg';
 	}
 ?>
 <form action="add_class.php">
