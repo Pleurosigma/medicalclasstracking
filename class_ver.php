@@ -27,6 +27,7 @@ Update Nov 7, 2010: grace period stuff added.
 <?php
 	//Set up db connection and select db
 	include("db_connect.php");
+	include("TM.php");
 	$con = getConnection();
 	selectDB($con);
 	
@@ -40,18 +41,30 @@ Update Nov 7, 2010: grace period stuff added.
 	$date = $year . "-" . $month . "-" . $day;
 	$startHour = $_POST["starttimehr"];
 	$startMinute = $_POST["starttimemin"];
-	$startAM = $_POST["amstart"];
-	if($startAM != "True"){
-		$startHour = (int)$startHour + 12;
-	}
-	$startTime = $startHour . ":" . $startMinute;
+	$startAM_PM = $_POST["amstart"];
+	
+//	Removed to use the TM class	
+//	if($startAM != "True"){
+//		$startHour = (int)$startHour + 12;
+//	}	
+//	$startTime = $startHour . ":" . $startMinute;
+
+	$startTime = "$startHour:$startMinute";
+	$startTime = TM::changeTo24Hr($startTime, $startAM_PM);
+	
 	$endHour = $_POST["endtimehr"];
 	$endMinute = $_POST["endtimemin"];
-	$endAM = $_POST["endam"];
-	if($endAM != "True"){
-		$endHour = (int)$endHour + 12;
-	}
-	$endTime = $endHour . ":" . $endMinute;
+	$endAM_PM = $_POST["endam"];
+
+//	Removes to use TM class
+//	if($endAM != "True"){
+//		$endHour = (int)$endHour + 12;
+//	}
+//	$endTime = $endHour . ":" . $endMinute;
+
+	$endTime = "$endHour:$endMinute";
+	$endTime = TM::changeTo24Hr($endTime, $endAM_PM);
+	
 	$credits = $_POST["credits"];
 	$faculty = $_POST["faculty"];
 	$grace = (int)$_POST["grace"];
