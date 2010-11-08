@@ -16,7 +16,7 @@
 	function getConnection(){
 		$db_location = "localhost";
 		$db_userName = "root";
-		$db_userPass = "password";
+		$db_userPass = "!mrfrosty0";
 		$con = mysql_connect($db_location, $db_userName, $db_userPass);
 		if(!$con){
 			die('Could not connect: ' . mysql_error());
