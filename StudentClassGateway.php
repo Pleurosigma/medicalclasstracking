@@ -1,4 +1,5 @@
 <?php
+	include_once('LDAPHelper.php');
 	/**
 	Author: Logan Wilkerson
 	StudentClassGateway.php
@@ -12,6 +13,23 @@
 				$a[] = $val;
 			}
 			return $a;			
+		}
+		
+		public static function selectAllStudentClasses(){
+			$select = 'SELECT * FROM StudentClasses';
+			$result=mysql_query($select);
+			while($val = mysql_fetch_array($result)){
+				$classlist[$val['Onyen']][] = $val['ClassCode'];
+				if(!isset($sortedList[$val['Onyen']])){
+					$name = LDAPHelper::getName($val['Onyen']);
+					$lastname = end(explode(' ', $name));
+					$sortedList[$val['Onyen']] = $lastname;
+				}
+			}
+			asort($sortedList);
+			$a[] = $classlist;
+			$a[] = $sortedList;
+			return $a;
 		}
 		
 		public static function studentHasClass($onyen, $classCode){

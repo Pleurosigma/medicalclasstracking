@@ -2,6 +2,21 @@
 <body>
 <h3> Here is my LDAP Test </h3>
 <?php
+	$username = 'lcwilker';
+	$pass = '!thedoorisopen0';
+	$ldap_host = 'ldap.unc.edu';
+	$dn = 'ou=people,dc=unc,dc=edu';
+	$filter='uid='.$username;
+	$ds = ldap_connect($ldap_host);
+	if($ds){
+		echo 'got a connection <br />';
+		$r = ldap_bind($ds);
+		$sr = ldap_search($ds, $dn, $filter);
+		$info = ldap_get_entries($ds, $sr);
+		print_r($info);
+	}
+	echo 'done';
+	
 //	$username = "cblashka";
 //	$password = "eighten=18";
 //	$ldap_host = "ldap.unc.edu";
@@ -28,11 +43,11 @@
 //	else{
 //		die("No connection");
 //	}
-	include("ldap_functions.php");
-	if(authenticate('hgrogers', '0000')){
-		echo 'Authenticate is go</br>';
-	}		
-	echo 'Name is ' . getName('martinec') . '</br>';
+//	include("ldap_functions.php");
+//	if(authenticate('hgrogers', '0000')){
+//		echo 'Authenticate is go</br>';
+//	}		
+//	echo 'Name is ' . getName('martinec') . '</br>';
 ?>
 </body>
 </html>
