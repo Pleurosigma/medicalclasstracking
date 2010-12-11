@@ -1,19 +1,24 @@
 <?php
 	/**
-	Author: Logan Wilkerson
+	Author: Logan Wilkerson, Hanna Palmerton
 	TM.php
 	The TimeManipulator class. Allows formating of time strings.
 	*/
 	class TM{
 		public static function getDayOfWeek($time){
 			$date = new DateTime($time);
-			return $date->format('D');
+			return $date->format('l');
 		}
 		
 		public static function getStandardDateAndTime($time){
 			$date = new DateTime($time);
-			return $date->format('l jS \of F Y \a\t h:i:s A');
+			return $date->format('l, j F Y, g:iA');
 		}
+                
+                public static function getStandardTime($time){
+                        $newTime = new DateTime($time);
+                        return $newTime->format('g:iA');
+                }
 		
 		private static function getSEP($time){
 			$time_array = str_split($time);

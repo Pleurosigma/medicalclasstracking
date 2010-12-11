@@ -29,7 +29,7 @@
 </table>
 
 <ul id="tabmenu">
-    <li><a class="active" href="ver_student_class.php">Student</a></li>
+    <li><a class="active" href="addconfirmation.html">Student</a></li>
     <li><a href="adminlogin.html">Administrator</a></li>
 </ul>
 
@@ -41,7 +41,7 @@
         }
         selectDB(getConnection());
         $backButton = '<br><form action="add_student_class.php" method="link">
-                        <input type="submit" value="Back" id="addsearchbutton">
+                        <input type="submit" value="BACK" id="addsearchbutton">
                         </form>';
                         
         $classCode = $_POST['classcode'];		
@@ -63,7 +63,8 @@
                 //THIS VALUE SHOULD BE CHANGED TO $inTime when not testing the addition features
                 
                 if(1){
-                        echo 'Are you sure you want to add <b>' . $_SESSION['class']['ClassName'] . ' (' . TM::getStandardDateAndTime($_SESSION['class']['StartTime']) . ')</b>?<br>';
+                        echo 'Are you sure you want to add <b>' . $_SESSION['class']['ClassName'] . '</b>, 
+                                on' . TM::getStandardDateAndTime($_SESSION['class']['StartTime']) . ', to your schedule?<br>';
                         
                         echo '<form name="verify" action="add_student_class.php" method="post">
                                 <input type="radio" name="add" value="1" checked>Yes<br>

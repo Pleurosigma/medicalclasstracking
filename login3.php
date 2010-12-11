@@ -7,15 +7,34 @@
 	setcookie("classCode", $classCode, time() + 3600);
 ?>
 <html>
-	<body>
+<head>
+<title>Capstone</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+</head>
+<body>
+
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a class="active" href="login3.html">Student</a></li>
+    <li><a href="adminlogin.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+
 		<?php
-			echo "TESTING </br>";
+			echo '<table id="dbtable">
+                                <tr><td>ADD A COURSE</td></tr></table>';
 			$pid = $_COOKIE['pid'];
 			if($pid == null || $classCode == null){
 				die("PID or ClassCode null");
 			}
 			
-			$con = mysql_connect("localhost", "root", "!mrfrosty0");
+			$con = mysql_connect("localhost", "root", "");
 			if(!$con){
 				die('Lost database connection: ' . mysql_error());
 			}
@@ -26,13 +45,13 @@
 			if(!($class = mysql_fetch_array($result))){
 				die('No class with this class id');
 			}
-			echo "Are you sure you want to enter this class? </br>";
-			echo $class['className'];
-			echo "<form action = \"login2.php\" method = \"post\">";
-			echo "<input type = \"radio\" name = \"yesno\" value = True /> Yes </br>";
-			echo "<input type = \"radio\" name = \"yesno\" value = False checked/> No</br>";
-			echo "<input type = \"submit\"value = \"Enter\" />";
-			echo "</form>";
+                        echo '<br>Are you sure you want to add <b>'. $class['className'] . '</b> to your schedule?<br>
+                                <form action="login2.php" method="post"><input type="radio" name="yesno" value="true">Yes</input>
+                                &nbsp;<input type="radio" name="yesno" value="false checked">No</input><br>
+                                <input type="submit" id="addsearchbutton" value="ENTER">
+                                </form>';
 		?>
-	</body>
+</div>
+
+</body>
 </html>

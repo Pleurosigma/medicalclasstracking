@@ -1,43 +1,30 @@
 <html>
-<!--
-Author: Logan Wilkerson
-This is the main index page showing the PID
--->
 <head>
-	<script type = "text/javascript">
-		function validate_required(field, alerttxt){
-			with(field){
-				if(value == null || value == ""){
-					alert(alerttxt);
-					return false;
-				}
-				else{
-					var iChars = "\"!@#$%^&*()+=-[]{}\';,./|:<>?";
-					for(var i = 0; i < value.length; i++){
-						if(iChars.indexOf(value.charAt(i)) != -1){
-							alert("No Special Characters");
-							return false;
-						}
-					}
-					return true;
-				}
-				
-			}
-		}
-		
-		function validate_form(thisform){
-			with(thisform){
-				return validate_required(pid, "PID Must be filled out");
-			}
-		}
-	</script>
+<title>Capstone</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<script type = "text/javascript" src="validate.js"></script>
 </head>
 <body>
-Capstone Course </br>
-<form action="login2.php" onsubmit = "return validate_form(this)" method="post">
-PID: <input type="text" name = "pid" />
-<input type="submit" value="Enter" />
+
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a class="active" href="index.html">Student</a></li>
+    <li><a href="adminlogin.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+
+<form name="studentLoginForm" action="add_student_class.php" onsubmit='return validate_form( this )' method="post">
+<br><br><label>Onyen:</label><input type="text" id="ID" name="onyen" title="Onyen">
+<br><label>Password:</label><input type="password" id="password" name="password" title="Password">&nbsp;<input type="submit" value="LOG IN" id="button">
 </form>
+
+</div>
 
 </body>
 </html>
