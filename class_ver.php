@@ -6,30 +6,31 @@
 ?>
 <html>
 <!--
-Author: Logan Wilkerson
+Author: Logan Wilkerson, Hanna Palmerton
 A page to add the class to the database and verify it back to the user;
 Update Nov 7, 2010: grace period stuff added.
+Update Nov 9, 2010: merge css with new
 -->
 <head>
-<style type = "text/css">
-	table {
-	border: 0px solid;
-	border-collapse: collapse;
-	width: 100%;
-	text-align: center;
-	}
-	
-	th {
-	border: 1px solid;
-	}
-	
-	td {
-	border: 1px solid;
-	}
-</style>
+<title>Capstone</title>
+<script type = "text/javascript"src="validate.js"></script>
+<link rel="stylesheet" type="text/css" href="default.css">
 </head>
 <body>
-<h3>Class Entry Verification</h3>
+
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a href="index.html">Student</a></li>
+    <li><a class="active" href="class_ver.php">Administrator</a></li>
+</ul>
+
+<div id="content">
+    
 <?php
 	if(isset($_SESSION['newclass'])){	
 		$resetflag = true;
@@ -37,56 +38,58 @@ Update Nov 7, 2010: grace period stuff added.
 	else{
 		$resetflag = false;
 	}
+        
 	//Set up db connection and select db
 	$con = getConnection();
 	selectDB($con);
 	
 	//Get Post Values
-//	include("db_class_functions.php");
+	include("db_class_functions.php");
+        
+        //Class name
 	$className = $_POST["classname"];
+        
+        //Class date
 	$year = $_POST["year"];
 	$month = $_POST["month"];
 	$day = $_POST["day"];
 	$date = $year . "-" . $month . "-" . $day;
+        
+        //Class start time
 	$startHour = $_POST["starttimehr"];
 	$startMinute = $_POST["starttimemin"];
-	$startAM_PM = $_POST["amstart"];
-	
-//	Removed to use the TM class	
-//	if($startAM != "True"){
-//		$startHour = (int)$startHour + 12;
-//	}	
-//	$startTime = $startHour . ":" . $startMinute;
-
-	$startTime = "$startHour:$startMinute";
+	$startAM_PM = $_POST["amstart"];        
+        $startTime = "$startHour:$startMinute";
 	$startTime = TM::changeTo24Hr($startTime, $startAM_PM);
-	
+        
+        //Class end time
 	$endHour = $_POST["endtimehr"];
 	$endMinute = $_POST["endtimemin"];
-	$endAM_PM = $_POST["endam"];
-
-//	Removes to use TM class
-//	if($endAM != "True"){
-//		$endHour = (int)$endHour + 12;
-//	}
-//	$endTime = $endHour . ":" . $endMinute;
-
+	$endAM_PM = $_POST["amend"];
 	$endTime = "$endHour:$endMinute";
 	$endTime = TM::changeTo24Hr($endTime, $endAM_PM);
-	
-	$credits = $_POST["credits"];
-	$faculty = $_POST["faculty"];
-	$grace = (int)$_POST["grace"];
-	
-	//Smash the times together
+        
+        //Smash date and time together
 	$startTime = $date . " " . $startTime;
 	$endTime = $date . " " . $endTime;
+        
+        //Class credit hours
+	$credits = $_POST["credits"];
+        
+        //Class faculty
+	$faculty = $_POST["faculty"];
+        
+        //Class grace period
+        $grace = (int)$_POST["grace"];
+        if($grace == 1){ $graceValue = "15 minutes"; }
+        else{ $graceValue = "All day"; }
 	
+        //Insert info into table for user to confirm
 	$classCode = "";
 	$flag = true;
 	while($flag){	
-		$classCode = ClassGateway::getClassCode($className);
-		$flag = ClassGateway::isClassCodeRedundant($classCode);		
+		$classCode = getClassCode($className);
+		$flag = isClassCodeRedundant($classCode);		
 	}
 	if($resetflag){		
 		echo 'Page refresh detected. I\'m just gonna stop now.</br>';	
@@ -95,32 +98,26 @@ Update Nov 7, 2010: grace period stuff added.
 		echo "There was an error.";
 	}
 	else{
-		echo "Class Inserted </br>";
-		echo "<table>";
-		echo "<tr>";
-		echo "<th>Class Code</th>";
-		echo "<th>Class Name</th>";
-		echo "<th>Start Time</th>";
-		echo "<th>End Time</th>";
-		echo "<th>Credits</th>";
-		echo "<th>Faculty</th>";
-		echo "<th>Standard Grace</th>";
-		echo "</tr>";
-		echo "<tr>";
-		echo "<td>" . $classCode . "</td>";
-		echo "<td>" . $className . "</td>";
-		echo "<td>" . $startTime . "</td>";
-		echo "<td>" . $endTime . "</td>";
-		echo "<td>" . $credits . "</td>";
-		echo "<td>" . $faculty . "</td>";
-		echo "<td>" . $grace . "</td>";
-		echo "</tr>";
-		echo "</table>";
-		$_SESSION['newclass'] = 'omg';
-	}
+                echo 'Class inserted.<br><br>';
+                echo '<table id="studentsched" class="schedule">
+                        <th>Code</th><th>Session</th><th>Faculty</th><th>Start time</th><th>End time</th><th>Standard grace</th><th>Credit hours</th>
+                        <tr><td>' . $classCode . '</td>
+                        <td>' . $className . '</td>
+                        <td>' . $faculty . '</td>
+                        <td>' . $startTime . '</td>
+                        <td>' . $endTime . '</td>
+                        <td>' . $graceValue . '</td>
+                        <td id="schedhours">' . $credits . '</td></tr>
+                        </table>';
+                echo '<br><form action="add_class.php"><input type="submit" value="Add another course" id="button"></form>
+                        <input type="submit" value="Edit this course" id="button">
+                        <input type="submit" value="Delete this course" id="button">';
+                echo '<div id="dbadd"><form action="courselist.php"><input type="submit" value="RETURN TO COURSELIST" id="addsearchbutton"></form></div>';
+                $_SESSION['newclass'] = 'omg';
+        }
 ?>
-<form action="add_class.php">
-	<input type="submit" value="Back">
-</form>
+
+</div>
+
 </body>
 </html>

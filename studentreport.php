@@ -11,7 +11,6 @@
 	include('StudentClassGateway.php');
 	include('ClassGateway.php');
 	include('TM.php');
-        include error_reporting(0);
 ?>
 <html>
 <head>
@@ -31,13 +30,13 @@
 </table>
 
 <ul id="tabmenu">
-    <li><a class="active" href="add_student_class.php">Student</a></li>
+    <li><a class="active" href="studentreport.html">Student</a></li>
     <li><a href="adminlogin.html">Administrator</a></li>
 </ul>
 
 <div id="content">
 
-    <?php
+<?php
 		if(!isset($_SESSION['onyen'])){
 			if(!isset($_POST['onyen'])){
 				die("Error: Please return to login page");
@@ -69,28 +68,31 @@
 			}
 
                 echo '<div id="addsearch"><form name="studentClassCodeForm" action="ver_student_class.php" onsubmit="return validate_form( this )" method="post" align="right">
-                        <input type="text" name="classcode" title="Class Code" id="addsearchtext">&nbsp;<input type="submit" value="ADD CLASS" id="addsearchbutton"></form>
-                        <form action="" method="link">&nbsp;<input type="submit" value="LOG OUT" id="addsearchbutton">
+                        <input type="text" name="classcode" title="Class Code" id="addsearchtext">&nbsp;<input type="submit" value="ADD CLASS" id="addsearchbutton">
                         </form></div>';
 
                 $studentClasses = StudentClassGateway::selectStudentClassesByOnyen($_SESSION['onyen']);
                 echo '<br>
                 <table id="studentsched" class="schedule">
                     <tr><td id="student">' . $_SESSION['name'] . '</td></tr>
-                    <th>Session(s) attended</th><th>Faculty</th><th>Date and time</th><th>Credit hours</th>';
+                    <th>Session(s) attended</th><th>Faculty</th><th>Start time</th><th>End time</th><th>Credit hours</th>';
 
-                $hours = 0;
                 foreach($studentClasses as $sc){
                     $class = ClassGateway::selectClassByClassCode($sc['ClassCode']);
+                    $startDay = TM::getDayOfWeek($class['StartTime']);
+                    $endDay = TM::getDayOfWeek($class['EndTime']);
+                    $st_split = explode(" ", $class['StartTime']);
                     $et_split = explode(" ", $class['EndTime']);
-                    $newET = TM::getStandardTime($et_split[1]);
+                    $st_12Hr = TM::changeTo12Hr($st_split[1]);
+                    $et_12Hr = TM::changeTo12Hr($et_split[1]);
                     
                     echo '<tr><td>' . $class['ClassName'] . '</td>
                             <td>' . $class['Faculty'] . '</td>
-                            <td>' . TM::getStandardDateAndTime($class['StartTime']) . '-' . $newET . $et_12Hr[1] . '</td>';
+                            <td id="allcaps">' . $startDay . ' ' . $st_12Hr[0] . ' ' . $st_12Hr[1] . '</td>
+                            <td id="allcaps">' . $endDay . ' ' . $et_12Hr[0] . ' ' . $et_12Hr[1] . '</td>';
                     
                     $classHours = $class['CreditHrs'];
-                    echo '<td id="schedhours">' . (int)$classHours . '</td></tr>';
+                    echo '<td id="schedhours">' . $classHours . '</td></tr>';
                     $hours += $classHours;
                 }
                 echo '<tr><td id="studschedinvis"></td>
@@ -98,8 +100,7 @@
                         <td id="studschedvis">Total hours:</td>
                         <td id="studschedvis" style="text-align: right;">' . $hours . '</td></tr>
                         </table>';
-            }
-    ?>
+?>
 
 </div>
 

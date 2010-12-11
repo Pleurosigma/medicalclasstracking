@@ -3,7 +3,8 @@
 	Author: Logan Wilkerson
 	This is the second page the user will see after loging in
 	*/
-	//sets the PID in a cookie so it can be remembered
+	
+        //Sets the PID in a cookie so it can be remembered
 	$pid = $_POST["pid"];
 	if($pid != null){
 		setcookie("pid", $pid, time() + 3600);
@@ -13,10 +14,30 @@
 	}
 ?>
 <html>
-	<body>
-	<?php	
+<head>
+<title>Capstone</title>
+<link rel="stylesheet" type="text/css" href="default.css">
+</head>
+<body>
+
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a class="active" href="login2.html">Student</a></li>
+    <li><a href="adminlogin.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+	
+        <?php	
+                include error_reporting(0);
+        
 		//Connect to database
-		$con = mysql_connect("localhost", "root", "!mrfrosty0");
+		$con = mysql_connect("localhost", "root", "");
 		if(!$con){
 			die('Could not connect: ' . mysql_error());
 		}
@@ -29,7 +50,7 @@
 			die('No student with that PID');
 		}
 		
-		//Checks for class code and adds if varafied
+		//Checks for class code and adds if verified
 		$insert = $_POST['yesno'];
 		if($insert == "True"){
 			$classCode = $_COOKIE['classCode'];
@@ -42,12 +63,10 @@
 			}
 		}
 		
-		$studentName = $student['name'];
-		echo "Student Name: " . $studentName . "</br></br>";
-		echo "<form action = \"login3.php\" method = \"post\">";
-		echo "Class Code: <input type = \"text\" name = \"classCode\" />";
-		echo "<input type = \"submit\" value = \"Enter\" />";
-		echo "</form>";
+                //Input box for adding class by class code
+                echo '<div id="addsearch"><form action="login3.php" method="post" align="right">
+                        <input type="text" id="addsearchtext" name="classCode">&nbsp;<input type="submit" id="addsearchbutton" value="ADD CLASS">
+                        </form></div>';
 		
 		$counter = 0;
 		$result = mysql_query("SELECT * FROM studentClasses WHERE pid = '" . $pid . "'");
@@ -62,29 +81,28 @@
 			$counter ++;
 		}
 		
-		echo "<table border = '1'>
-		<tr>
-			<th>Class Name</th>
-			<th>Credit Hours</th>
-		</tr>";
+                //Input student information into report table
+                $studentName = $student['name'];
+		echo '<br><table id="studentsched" class="schedule"><tr><td id="student">' . $studentName . '</td></tr>
+                        <th>Session(s) attended</th><th>Faculty</th><th>Date and time</th><th>Credit hours</th>';
 		$hours = 0;
 		foreach ($classes as $class){
-			echo "<tr>";
-			echo "<td>" . $class['className'] . "</td>";
-			$classHours = $class['classHours'];
-			echo "<td>" . $classHours . "</td>";
-			echo "</tr>";
-			$hours += $classHours;
+                echo '<tr><td>' . $class['className'] . '</td>
+                        <td>' . $class['faculty'] . '</td>
+                        <td id="allcaps">' . $class['date'] . ',' . $class['startTime'] . '-' .$class['endTime'] . '</td>';
+                $classHours = $class['classHours'];
+                echo '<td id="schedhours">' . $classHours . '</td></tr>';
+                $hours += $classHours;
 		}
-		
-		echo "<tr>
-			<td>Total Hours:</td>";
-		echo "<td>" . $hours . "</td>";
-		echo "</tr>";
-		echo "</table>";
+                echo '<tr><td id="studschedinvis"></td>
+                        <td id="studschedinvis"></td>
+                        <td id="studschedvis">Total hours:</td>
+                        <td id="studschedvis" style="text-align: right;">' . $hours . '</td></tr>
+                        </table>';
 
 		mysql_close($con);
-			
 	?>
-	</body>
+</div>
+
+</body>
 </html>

@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Capstone</title>
+
+<!--Modified code, originally written by COBOLdinosaur on snippets.dzone.com, "Expand and collapse effect for data grids"-->
+<script type="text/javascript"> 
+    var ELpntr=false;
+    function hideall() {
+        locl = document.getElementsByName('schedule');
+        for (i=0;i<locl.length;i++) {
+            locl[i].style.display='none';
+        }
+    }
+
+    function showHide(EL,PM)
+    {
+        ELpntr=document.getElementById(EL);
+        if (ELpntr.style.display=='none')
+        {
+            document.getElementById(PM);
+            ELpntr.style.display='block';
+        }
+        else
+        {
+            document.getElementById(PM);
+            ELpntr.style.display='none';
+        }
+    }
+    onload=hideall;
+</script>
+
+<link rel="stylesheet" type="text/css" href="default.css">
+
+</head>
+
+<body>
+    
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a href="index.html">Student</a></li>
+    <li><a class="active" href="adminreport.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+
+<!--Search for hours, search for student by name or PID-->
+<div id="addsearch" align="right">
+    <input style="width: 175px;" type="text" id="addsearchtext" value="Onyen">&nbsp;<input style="width: 175px;" type="text" id="addsearchtext" value="Class code">&nbsp;<input type="submit" value="ADD" id="addsearchbutton">&nbsp;<input type="submit" value="DELETE" id="addsearchbutton">
+    <br><form align="right">
+    <select style="color: color: #103d66;"><option>Student onyen</option><option>Student name</option><option>Student hours greater than or equal to</option><option>Student hours less than or equal to</option><option>Student hours equal to</option></select>
+    <input type="text" id="addsearchtext">&nbsp;<input type="submit" value="FILTER" id="addsearchbutton">
+    </form>
+</div>
+
+<form action="courselist.php"><input type="submit" value="CLASS COURSELIST" id="addsearchbutton"></form><br><br>
+<table id="adminreport">
+    <tr>
+        <td id="admin">Dr. Ana Felix</td>
+    </tr>
+    <tr class="vis">
+        <th id="pid">Onyen</th>
+        <th id="name">Student name <span style="font-weight: normal;">(Click on name to expand/collapse)</span></th>
+        <th id="hours">Hours</th>
+    </tr>
+</table>
+
+<table id="adminreport">
+    <tr class="vis">
+        <td id="pid">hpalmert</td>
+        <td id="name"><a href="#" onclick="showHide('hiddensched','schedspan')"><span id="schedspan">Hanna Palmerton</span></td>
+        <td id="hours">1</td>
+    </tr>
+    <table id="hiddensched" class="schedule" name="schedule">
+        <tr><th>Code</th><th>Session(s) attended</th><th>Faculty</th><th>Date and time</th><th>Credit hours</th>
+        <tr><td>INTRON&B</td><td>Introduction & Nuts and Bolts</td><td>Dr. Ana Felix</td><td id="allcaps">03-01-2010, Monday 8am-9am</td><td id="schedhours">1</td></tr>
+    </table>
+</table>
+
+</div>
+
+</body>
+</html>

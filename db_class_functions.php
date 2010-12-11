@@ -8,7 +8,7 @@
 	}
 
 	function getClassInsertQuery($ClassCode, $ClassName, $StartTime, $EndTime, $CreditHrs, $Faculty){
-		$insert = "INSERT INTO Classes VALUES ('" . $ClassCode . "','" . $ClassName . "','" . $StartTime . "','" . $EndTime . "'," . $CreditHrs . ",'" . $Faculty . "')";
+		$insert = "INSERT INTO Classes VALUES ('" . $ClassCode . "','" . $ClassName . "','" . $StartTime . "','" . $EndTime . "','" . $CreditHrs . "','" . $Faculty . "')";
 		return $insert;
 	}
 	
