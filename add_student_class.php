@@ -36,12 +36,8 @@
 </ul>
 
 <div id="content">
-
     <?php
-		if(!isset($_SESSION['onyen'])){
-			if(!isset($_POST['onyen'])){
-				die("Error: Please return to login page");
-			}
+		if(isset($_POST['onyen'])){
 			$onyen = $_POST['onyen'];
 			$password = $_POST['password'];
 			if(LDAPHelper::authenticate($onyen, $password)){
@@ -49,11 +45,15 @@
 				$_SESSION['onyen'] = $onyen;
 			}
 			else{
-				echo 'You were not logged in :(';
+				echo 'You were not logged in :(<br />';
 			}
 		}
+//		if(!isset($_SESSION['onyen'])){
+//			echo 'Please return to login page.';
+//		}
 		if(isset($_SESSION['onyen'])){
 			selectDB(getConnection());
+			echo 'test';
 			//Adds a class
 			if(isset($_SESSION['class'])){
 				$add = (int)$_POST['add'];
