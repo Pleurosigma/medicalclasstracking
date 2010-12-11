@@ -3,7 +3,7 @@
 	Author: Logan Wilkerson, Hanna Palmerton
 	add_student_class.php
 	This class sets up the page for allowing a student to add a class to their
-	student list
+	student list. This class will also add a studentclass to the database if one is found
 	*/
 	session_start();
 	include('db_connect.php');
@@ -56,7 +56,7 @@
 		if(isset($_SESSION['onyen'])){
 			selectDB(getConnection());
 			echo 'test';
-			//Adds a class
+			//Adds a student class if one is found
 			if(isset($_SESSION['class'])){
 				$add = (int)$_POST['add'];
 				if($add){
