@@ -19,11 +19,11 @@
 			$select = 'SELECT * FROM StudentClasses';
 			$result=mysql_query($select);
 			while($val = mysql_fetch_array($result)){
-				$classlist[$val['Onyen']][] = $val['ClassCode'];
-				if(!isset($sortedList[$val['Onyen']])){
-					$name = LDAPHelper::getName($val['Onyen']);
+				$classlist[$val['ONYEN']][] = $val['ClassCode'];
+				if(!isset($sortedList[$val['ONYEN']])){
+					$name = LDAPHelper::getName($val['ONYEN']);
 					$lastname = end(explode(' ', $name));
-					$sortedList[$val['Onyen']] = $lastname;
+					$sortedList[$val['ONYEN']] = $lastname;
 				}
 			}
 			asort($sortedList);

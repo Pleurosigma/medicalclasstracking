@@ -13,10 +13,10 @@
 		editClass
 		Edits a class in the database
 		*/
-		public static function editClass($classCode, $className, $startTime, $endTime, $creditHrs, $faculty){
-			ClassGateway::deleteClassByClassCode($classCode);
-			$insert = ClassGateway::getClassInsertQuery($classCode, $className, $startTime, $endTime, $creditHrs, $faculty);
-			return ClassGateway::insertClass($insert);
+		public static function editClass($classCode, $className, $startTime, $endTime, $creditHrs, $faculty, $grace){
+			UPDATE Classes SET CLASSNAME='', StartTime='', EndTime='', CreditHrs='', Faculty='', StandardGrace='' WHERE ClassCode = 
+			$update = "UPDATE Classes SET ClassName='$className', StartTime='$startTime', EndTime='$endTime', CreditHrs=$creditHrs, Faculty='$faculty', StandardGrace=$grace WHERE ClassCode='$classCode'";
+			return mysql_query($update);
 		}
 		
 		public static function insertClass($classCode, $className, $startTime, $endTime, $creditHrs, $faculty, $grace){
