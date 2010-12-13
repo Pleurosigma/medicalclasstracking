@@ -2,11 +2,14 @@
 	class ClassGateway{
 		/**
 		deleteClassByClassCode
-		deletes a class from the database using its class code
+		deletes a class from the database using its class code. This will also remove any
+		StudentClasses using this classcode
 		*/
 		public static function deleteClassByClassCode($classCode){
 			$delete = "DELETE FROM Classes WHERE ClassCode = '$classCode'";
-			return mysql_query($delete);
+			$b = mysql_query($delete) or die(mysql_error());
+			$deleteSC = "DELETE FROM StudentClasses WHERE ClassCode = '$classCode'";
+			return $b && mysql_query($deleteSC) or die(mysql_error());
 		}
 		
 		/**

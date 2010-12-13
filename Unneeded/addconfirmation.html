@@ -1,7 +1,7 @@
 <?php
 	/**
 	Author: Logan Wilkerson, Hanna Palmerton
-	addconfirmation.php
+	addconfirmation.html
 	Verifies that a students class can be added and checks with the student to see if it
 	should be added.
 	*/
