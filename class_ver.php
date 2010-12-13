@@ -112,7 +112,7 @@ Update Nov 9, 2010: merge css with new
                 echo '<br><form action="add_class.php"><input type="submit" value="Add another course" id="button"></form>
                         <input type="submit" value="Edit this course" id="button">
                         <input type="submit" value="Delete this course" id="button">';
-                echo '<div id="dbadd"><form action="courselist.php"><input type="submit" value="RETURN TO COURSELIST" id="addsearchbutton"></form></div>';
+                echo '<div id="addsearch"><form action="courselist.php"><input type="submit" value="RETURN TO COURSELIST" id="addsearchbutton"></form></div>';
                 $_SESSION['newclass'] = 'omg';
         }
 ?>

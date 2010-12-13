@@ -4,9 +4,41 @@ Author: Hanna Palmerton
 A page that lists the courses from the database
 -->
 <head>
+
 <title>Capstone</title>
 
 <link rel="stylesheet" type="text/css" href="default.css">
+
+<!--Modified code by Kiran Pai, from codetoad.com-->
+<SCRIPT LANGUAGE = "JavaScript">
+var totalboxes;
+
+function setCount(count, target){
+ 
+totalboxes=count;
+
+if(target == 0) document.reportform.action="add_class.php";
+if(target == 1) document.reportform.action="adminlogin.html";
+if(target == 2) document.reportform.action="delete_class.php";
+}
+
+function isReady(form) {
+
+//Exception for "Add a course" button
+if(totalboxes == -1) return true;
+
+//Otherwise
+var c = form['boxes[]'];
+for(var x=0 ; x<totalboxes ; x++){ 
+    //If even one box is checked then return true
+    if(c[x].checked) return true;
+}
+//Default action: When even one was not checked then...
+alert("Please check at least one checkbox.");
+return false;
+
+}
+</SCRIPT>
 
 </head>
 <body>
@@ -28,12 +60,13 @@ A page that lists the courses from the database
     //Set up db connection and select db
     include("db_connect.php");
     $con = getConnection();
-    selectDB($con); 
+    selectDB($con);
 
     //Enter classes' information into report table
-    echo '<form action="adminreport.html"><input type="submit" value="ADMIN HOME" id="addsearchbutton"></form><br><br>
+    echo '<form action="adminreport.php"><input type="submit" value="ADMIN HOME" id="addsearchbutton"></form><br><br>
             <table id="studentsched" class="schedule">
             <th class="invishead"></th><th>Code</th><th>Session</th><th>Faculty</th><th>Date</th><th>Day</th><th>Start time</th><th>End time</th><th>Standard grace</th><th>Credit hours</th>';
+    echo '<form onSubmit="return isReady(this)" action="" name="reportform" method="post">';
     
     include("TM.php");
     $counter = 0;
@@ -42,7 +75,7 @@ A page that lists the courses from the database
         if($counter%2 == 0){ echo '<tr>'; }
         else{ echo '<tr id="altbackground">'; }
         
-        echo '<td id="studschedinvis"><input type="checkbox" name="checkbox[]"></input></td>
+        echo '<td id="studschedinvis"><input type="checkbox" value="' . $class['ClassCode'] . '" name="boxes[]"></input></td>
                 <td>' . $class['ClassCode'] . '</td>
                 <td>' . $class['ClassName'] . '</td>
                 <td>' . $class['Faculty'] . '</td>';
@@ -77,11 +110,12 @@ A page that lists the courses from the database
     }
 
     echo '</table>';
-    echo '<div id="dbadd">
-            &nbsp;<form action="add_class.php"><input type="submit" value="ADD A COURSE" id="addsearchbutton"></form>
-            &nbsp;<input type="submit" value="EDIT A SELECTED COURSE" name="delete" id="addsearchbutton">
-            &nbsp;<input type="submit" value="DELETE SELECTED COURSE(S)" id="addsearchbutton">
-            </div>';
+    echo '<div id="addsearch">
+            &nbsp;<input onClick="setCount(-1,0)" type="submit" value="ADD A COURSE" id="addsearchbutton">
+            &nbsp;<input onClick="setCount(' . $counter . ',1)" type="submit" value="EDIT A SELECTED COURSE" name="edit" id="addsearchbutton">
+            &nbsp;<input onClick="setCount(' . $counter . ',2)" type="submit" value="DELETE SELECTED COURSE(S)" name="delete" id="addsearchbutton">
+            </div>
+            </form>';
 ?>
 
 </div>

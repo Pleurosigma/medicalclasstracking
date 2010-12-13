@@ -90,7 +90,7 @@
                             <td>' . TM::getStandardDateAndTime($class['StartTime']) . '-' . $newET . $et_12Hr[1] . '</td>';
                     
                     $classHours = $class['CreditHrs'];
-                    echo '<td id="schedhours">' . (int)$classHours . '</td></tr>';
+                    echo '<td id="schedhours">' . $classHours . '</td></tr>';
                     $hours += $classHours;
                 }
                 echo '<tr><td id="studschedinvis"></td>

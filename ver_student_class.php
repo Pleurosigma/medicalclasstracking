@@ -65,10 +65,10 @@
                 if(1){
                         echo 'Are you sure you want to add <b>' . $_SESSION['class']['ClassName'] . ' (' . TM::getStandardDateAndTime($_SESSION['class']['StartTime']) . ')</b>?<br>';
                         
-                        echo '<form name="verify" action="add_student_class.php" method="post">
+                        echo '<form name="verify" action="add_student_class.php" method="post"><br>
                                 <input type="radio" name="add" value="1" checked>Yes<br>
-                                <input type="radio" name="add" value="0">No<br>
-                                <input type="submit" value="ENTER">
+                                <input type="radio" name="add" value="0">No<br><br>
+                                <input type="submit" id="addsearchbutton" value="SUBMIT">
                                 </form>';
                 }
                 //If it is not a valid entry time

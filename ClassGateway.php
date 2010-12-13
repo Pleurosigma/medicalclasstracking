@@ -34,7 +34,7 @@
 		
 		public static function selectClassByClassCode($ClassCode){
 			$select = "SELECT * FROM Classes WHERE ClassCode = '$ClassCode'";
-			$r = mysql_query($select);
+			$r = mysql_query($select) or die(mysql_error());
 			if(!$val = mysql_fetch_array($r)){
 				return false;
 			}
