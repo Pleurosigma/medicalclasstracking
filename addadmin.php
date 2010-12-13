@@ -2,7 +2,7 @@
 	/**
 	Author: Logan Wilkerson
 	addadmin.php
-	Allows entering a new admin.
+	Allows entering and deleting an admin
 	*/
 	session_start();
 	include('db_connect.php');
