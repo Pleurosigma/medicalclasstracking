@@ -22,9 +22,9 @@
 			$onyen = strtolower($_POST['adminonyen']);
 			$password = $_POST['adminpassword'];
 			selectDB(getConnection());
-//			if($_SESSION['adminonyen'] != strtolower($onyen)){
-//				die('Please log in with your own information.');
-//			}
+			if($_SESSION['adminonyen'] != $onyen){
+				die('Please log in with your own information.');
+			}
 			if(LDAPHelper::authenticate($onyen, $password) && AdminDBTools::isAdmin($onyen)){
 				if(AdminDBTools::clearAll())
 					echo 'Reset Complete';
