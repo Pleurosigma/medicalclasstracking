@@ -42,13 +42,11 @@
 		}
 		
 		public static function clearAll(){
-			$drops = "
-				TRUNCATE TABLE Admins;
-				TRUNCATE TABLE Classes;
-				TRUNCATE TABLE StudentClasses;
-				";
-			$v = mysql_query($drops);
-			addRoot();
+			$v = true;
+			$v = $v && mysql_query("TRUNCATE TABLE Classes")or die(mysql_error());
+			$v = $v && mysql_query("TRUNCATE TABLE StudentClasses") or die(mysql_error());
+			$v = $v && mysql_query("TRUNCATE TABLE Admins") or die(mysql_error());
+			AdminDBTools::addRoot();
 			return $v;
 		}
 	}
