@@ -3,14 +3,14 @@ function validate(txt, fieldTitle, fieldName){
 		return true;
 	}
 	var iChars = "\\\"[]{}|~`!@#$%^*()-_+=;'<>,?";
-	if(txt == null || txt == ""){
+	if((txt == null || txt == "") && fieldName != "adminpassword"){
 		alert(fieldTitle + " must be filled out.");
 		return false;
 	}
 	if(fieldName == "date"){
 //		VALIDATE DATE SYNTAX
 	}
-	if(fieldName == "password"){
+	if(fieldName == "password" || fieldName == "adminpassword"){
 		iChars = iChars.replace('!',"");
 		iChars = iChars.replace('@',"");
 		iChars = iChars.replace('#', "");

@@ -3,7 +3,7 @@
 	Author: Logan Wilkerson, Hanna Palmerton
 	add_student_class.php
 	This class sets up the page for allowing a student to add a class to their
-	student list
+	student list. This class will also add a studentclass to the database if one is found
 	*/
 	session_start();
 	include('db_connect.php');
@@ -36,25 +36,27 @@
 </ul>
 
 <div id="content">
-
     <?php
-		if(!isset($_SESSION['onyen'])){
-			if(!isset($_POST['onyen'])){
-				die("Error: Please return to login page");
-			}
+		if(isset($_POST['onyen'])){
 			$onyen = $_POST['onyen'];
 			$password = $_POST['password'];
+			unset($_SESSION['onyen']);
+			unset($_SESSION['name']);
 			if(LDAPHelper::authenticate($onyen, $password)){
 				$_SESSION['name'] = LDAPHelper::getName($onyen);
 				$_SESSION['onyen'] = $onyen;
 			}
 			else{
-				echo 'You were not logged in :(';
+				echo 'You were not logged in :(<br />';
 			}
+		}
+		if(!isset($_SESSION['onyen'])){
+			echo 'Please return to login page.';
 		}
 		if(isset($_SESSION['onyen'])){
 			selectDB(getConnection());
-			//Adds a class
+			echo 'test';
+			//Adds a student class if one is found
 			if(isset($_SESSION['class'])){
 				$add = (int)$_POST['add'];
 				if($add){
@@ -70,7 +72,7 @@
 
                 echo '<div id="addsearch"><form name="studentClassCodeForm" action="ver_student_class.php" onsubmit="return validate_form( this )" method="post" align="right">
                         <input type="text" name="classcode" title="Class Code" id="addsearchtext">&nbsp;<input type="submit" value="ADD CLASS" id="addsearchbutton"></form>
-                        <form action="" method="link">&nbsp;<input type="submit" value="LOG OUT" id="addsearchbutton">
+                        <form action="studentlogout.php" method="link">&nbsp;<input type="submit" value="LOG OUT" id="addsearchbutton">
                         </form></div>';
 
                 $studentClasses = StudentClassGateway::selectStudentClassesByOnyen($_SESSION['onyen']);
