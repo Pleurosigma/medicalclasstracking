@@ -32,6 +32,11 @@
 			return $a;
 		}
 		
+		public static function deleteStudentClass($onyen, $classCode){
+			$delete = "DELETE FROM StudentClasses WHERE Onyen = '$onyen' and ClassCode = '$classCode'";
+			return mysql_query($delete);
+		}
+		
 		public static function studentHasClass($onyen, $classCode){
 			$select = "SELECT * FROM StudentClasses WHERE Onyen = '$onyen' AND ClassCode = '$classCode'";
 			$result = mysql_query($select);
