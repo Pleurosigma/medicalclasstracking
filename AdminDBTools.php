@@ -12,6 +12,11 @@
 			return mysql_query($delete);
 		}
 		
+		public static function deleteAdmin($onyen){
+			$delete = "DELETE FROM Admins WHERE Admins = '$onyen'";
+			return mysql_query($delete);
+		}
+		
 		public static function isAdmin($onyen){
 			$select = "SELECT * FROM Admins WHERE Admins = '$onyen'";
 			$result = mysql_query($select);
@@ -19,6 +24,16 @@
 				return true;
 			else
 				return false;
+		}
+		
+		public static function numberAdmins(){
+			$select = "SELECT * FROM Admins";
+			$result = mysql_query($select);
+			$count = 0;
+			while($v = mysql_fetch_array($result)){
+				$count = $count + 1;
+			}
+			return $count;
 		}
 		
 		public static function addRoot(){
