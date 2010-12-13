@@ -13,7 +13,7 @@
 		die('no login');
 	}
 	else{
-		$onyen = $_POST['adminonyen'];
+		$onyen = strtolower($_POST['adminonyen']);
 		if($onyen == 'root'){
 			if(AdminDBTools::isAdmin('root')){
 				$_SESSION['adminonyen'] = 'root';
@@ -22,9 +22,12 @@
 		}
 		$password = $_POST['adminpassword'];
 		if(LDAPHelper::authenticate($onyen, $password)){
-			if(AdminDBTools::isAdmin(strtolower($onyen))){
+			if(AdminDBTools::isAdmin($onyen)){
 				$_SESSION['adminonyen'] = $onyen;
 				die('logged in');
+			}
+			else{
+				die('you were not logged in.');
 			}
 		}
 		else{
