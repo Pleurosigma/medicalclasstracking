@@ -1,14 +1,14 @@
 <?php
+	/**
+	Author: Logan Wilkerson, Hanna Palmerton
+	A page to add a class into the database. This pages gets information from the user.
+	Update Nov 7, 2010: grace period stuff added
+	Update Nov 9, 2010: merged css with new	
+	*/
 	session_start();
 	unset($_SESSION['newclass'])
 ?>
 <html>
-<!--
-Author: Logan Wilkerson, Hanna Palmerton
-A page to add a class into the database
-Update Nov 7, 2010: grace period stuff added
-Update Nov 9, 2010: merged css with new
--->
 <head>
 <title>Capstone</title>
 <link rel="stylesheet" type="text/css" href="default.css">
