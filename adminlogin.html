@@ -3,6 +3,7 @@
 <title>Capstone</title>
 
 <link rel="stylesheet" type="text/css" href="default.css">
+<script type = "text/javascript" src="validate.js"></script>
 
 </head>
 <body>
@@ -20,9 +21,9 @@
 
 <div id="content">
 
-<form>
-<br><br><label>Id:</label><input type="text" id="ID">
-<br><label>Password:</label><input type="text" id="password">&nbsp;<input type="button" value="LOG IN" id="button">
+<form action="ver_admin_login.php" onsubmit = 'return validate_form( this )' method="post">
+<br><br><label>Onyen:</label><input type="text" id="ID" name="adminonyen" title="Admin Onyen">
+<br><label>Password:</label><input type="password" id="password" name="adminpassword" title="Password">&nbsp;<input type="submit" value="LOG IN" id="button">
 </form>
 <br><br><label></label><i>If you are a student, please return to the student log-in page by clicking the link at the top of the page.</i>
 
