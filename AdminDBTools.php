@@ -3,17 +3,17 @@
 	class AdminDBTools{
 		public static function addAdmin($adminonyen){
 			$insert = "INSERT INTO Admins values('$adminonyen')";
-			deleteRoot();
+			AdminDBTools::deleteRoot();
 			return mysql_query($insert);
 		}
 		
 		public static function deleteRoot(){
-			$delete = "DELETE FROM Admins WHERE admins = 'root'";
-			return mysql_query($insert);
+			$delete = "DELETE FROM Admins WHERE Admins = 'root'";
+			return mysql_query($delete);
 		}
 		
 		public static function isAdmin($onyen){
-			$select = "SELECT * FROM Admins WHERE Admin = '$onyen'";
+			$select = "SELECT * FROM Admins WHERE Admins = '$onyen'";
 			$result = mysql_query($select);
 			if($v = mysql_fetch_array($result))
 				return true;
