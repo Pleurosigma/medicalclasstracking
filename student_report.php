@@ -6,7 +6,8 @@
 	include('StudentClassGateway.php');
 	include('TM.php');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html" />
 	</head>
