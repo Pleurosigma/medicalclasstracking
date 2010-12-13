@@ -22,7 +22,7 @@
 		}
 		$password = $_POST['adminpassword'];
 		if(LDAPHelper::authenticate($onyen, $password)){
-			if(AdminDBTools::isAdmin($onyen)){
+			if(AdminDBTools::isAdmin(strtolower($onyen))){
 				$_SESSION['adminonyen'] = $onyen;
 				die('logged in');
 			}
