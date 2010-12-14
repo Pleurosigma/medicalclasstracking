@@ -37,8 +37,8 @@
 
 		<?php
 			selectDB(getConnection());
-			$backButton = '<br /><form action="adminreport.php" method="link">
-			<input type="submit" value="Back">
+			$backButton = '<br><br><form action="adminreport.php" method="link">
+			<input type="submit" value="BACK">
 			</form>';
 			$classCode = strtoupper($_POST['classcode']);
 			$onyen = $_POST['onyen'];
