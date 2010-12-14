@@ -38,6 +38,7 @@
     }
     onload=hideall;
 </script>
+<script type = "text/javascript" src="validate.js"></script>
 
 <link rel="stylesheet" type="text/css" href="default.css">
 
@@ -58,10 +59,12 @@
 <div id="content">
 
 <div id="addsearch" align="right">
+<form action="student_edit.php" method="post" onsubmit="return validate_form( this )">
     <input type="text" id="addsearchtext" value="Onyen">
         &nbsp;<input type="text" id="addsearchtext" value="Class code">
-        &nbsp;<input type="submit" value="ADD" name="action" id="addsearchbutton">
-        &nbsp;<input type="submit" value="DELETE" name="action" id="addsearchbutton">
+        &nbsp;<input type="submit" value="Add" name="action" id="addsearchbutton">
+        &nbsp;<input type="submit" value="Delete" name="action" id="addsearchbutton">
+</form>
     <br><form action="adminreport.php" method="post" align="right">
         <select name="searchtype" style="color: color: #103d66;">
             <option value="nofilter">No filter</option>

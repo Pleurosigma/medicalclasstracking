@@ -6,7 +6,7 @@
 ?>
 <html>
 <!--
-Author: Logan Wilkerson
+Author: Logan Wilkerson and Hanna Palmerton
 A page to add a class into the database
 -->
 <head>

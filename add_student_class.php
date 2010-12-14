@@ -51,7 +51,12 @@
 			}
 		}
 		if(!isset($_SESSION['onyen'])){
-			echo 'Please return to login page.';
+			echo 'Please return to login page. <br />';
+			echo '
+			<form action="index.html" method="link">
+				<input type="submit" value="Back">
+			</form>
+			';
 		}
 		if(isset($_SESSION['onyen'])){
 			selectDB(getConnection());
