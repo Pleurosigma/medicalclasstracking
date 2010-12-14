@@ -2,6 +2,9 @@
         session_start();
 	include('TM.php');	
 	include("ClassGateway.php");
+	if(!isset($_SESSION['adminonyen'])){
+		header('Location: adminlogin.html');
+	}
 ?>
 <html>
 <!--

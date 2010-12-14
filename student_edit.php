@@ -10,8 +10,7 @@
 	include('StudentClassGateway.php');
 	include('TM.php');
 	if(!isset($_POST['action']) || !isset($_SESSION['adminonyen'])){
-		//return to admin login
-		//die('no action or login');
+		header('Location: adminlogin.html');
 	}	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">

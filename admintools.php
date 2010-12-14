@@ -28,11 +28,21 @@
 
 <?php
 
+if(!isset($_SESSION['adminonyen'])){
+	echo 'You were not logged in. <br />';
+	echo '
+		<form action="adminlogin.html" method="link">
+			<input type="submit" value="Back">
+		</form>
+	';
+	die();
+}
+
 $adminonyen = $_SESSION['adminonyen'];
 $adminname = LDAPHelper::getName($adminonyen);
 
 echo '<div id="addsearch">
-        <form action="" method="link">&nbsp;<input type="submit" value="LOG OUT" id="addsearchbutton">
+        <form action="adminlogout.php" method="link">&nbsp;<input type="submit" value="LOG OUT" id="addsearchbutton">
         </form></div>
         
         <br><br><table id="dbtable"><tr><td>' . $adminname . '</td></tr></table><br><br>
