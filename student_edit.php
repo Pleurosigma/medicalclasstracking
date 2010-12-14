@@ -23,7 +23,7 @@
 	<body>
 		<?php
 			selectDB(getConnection());
-			$backButton = '<br /><form action="student_report.php" method="link">
+			$backButton = '<br /><form action="adminreport.php" method="link">
 			<input type="submit" value="Back">
 			</form>';
 			$classCode = $_POST['classcode'];
@@ -35,7 +35,7 @@
 					echo 'The student already has this class';
 					echo $backButton;
 				}
-				elseif($class == null){
+				elseif(!$class){
 					echo 'No class with that class code found.';
 					echo $backButton;
 				}
@@ -55,7 +55,7 @@
 					echo 'The student is not in this class';
 					echo $backButton;
 				}
-				elseif($class == null){
+				elseif(!$class){
 					echo 'No class with that class code found.';
 					echo $backButton;
 				}

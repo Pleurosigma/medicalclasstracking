@@ -2,7 +2,7 @@ function validate(txt, fieldTitle, fieldName){
 	if(fieldTitle == undefined){
 		return true;
 	}
-	var iChars = "\\\"[]{}|~`!@#$%^*()-_+=;'<>,?";
+	var iChars = "\\\"[]{}|~`!@#$%^*()-_+=;'<>,?.";
 	if((txt == null || txt == "") && fieldName != "adminpassword"){
 		alert(fieldTitle + " must be filled out.");
 		return false;
@@ -42,6 +42,7 @@ function validate(txt, fieldTitle, fieldName){
 		iChars = iChars.replace('"', "");
 	}
 	if(fieldName == "credits"){
+		iChars = iChars.replace('.', '');
 		if(isNaN(txt)){
 			alert(fieldTitle + " is not a number.");
 			return false;
@@ -90,7 +91,7 @@ function validate(txt, fieldTitle, fieldName){
 			return false;
 		}
 	}
-	if(fieldName == "starttimehr" || fieldName == "endtimeHr"){
+	if(fieldName == "starttimehr" || fieldName == "endtimehr"){
 		if(isNaN(txt)){
 			alert(fieldTitle + " is not a number.");
 			return false;
@@ -109,7 +110,7 @@ function validate(txt, fieldTitle, fieldName){
 		var mins = Number(txt);
 		if(mins < 0 || mins > 59){
 			alert(fieldTitle + " has illogical minutes.");
-			
+			return false;
 		}
 	}
 	if(fieldName == "faculty"){
