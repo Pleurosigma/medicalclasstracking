@@ -41,7 +41,7 @@
         }
         selectDB(getConnection());
         $backButton = '<br><br><form action="add_student_class.php" method="link">
-                        <input type="submit" value="Back" id="addsearchbutton">
+                        <input type="submit" value="BACK" id="button">
                         </form>';
                         
         $classCode = $_POST['classcode'];		

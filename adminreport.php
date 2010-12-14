@@ -41,6 +41,7 @@
         }
     }
     onload=hideall;
+    
 </script>
 
 <script type = "text/javascript" src="validate.js"></script>
@@ -64,9 +65,9 @@
 
 <div id="addsearch" align="right">
 
-<form action="student_edit.php" method="post" onsubmit="return validate_form( this )">
-    <input type="text" id="addsearchtext" value="Onyen" name="onyen">
-        &nbsp;<input type="text" id="addsearchtext" value="Class code" name="classcode">
+<form action="student_edit.php" method="post" onSubmit="return validate_form( this )">
+    <input type="text" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Onyen':this.value;" id="addsearchtext" value="Onyen" name="onyen">
+        &nbsp;<input type="text" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Class code':this.value;" id="addsearchtext" value="Class code" name="classcode">
         &nbsp;<input type="submit" value="ADD" name="action" id="addsearchbutton">
         &nbsp;<input type="submit" value="DELETE" name="action" id="addsearchbutton">
 </form>
