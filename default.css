@@ -24,7 +24,7 @@ body {
     list-style-type: none;
 }
         
-#tabmenu a, a:visited {
+#tabmenu a {
     font: normal 12px georgia;
     color: #FFFFFF;
     letter-spacing: 2px;
@@ -59,6 +59,16 @@ body {
     padding: 25px;
     border: 0px solid #103d66;
     z-index: 2;	
+}
+
+#content a:link, a:active, a:visited {
+    color: #003254;
+    background-color: #cfd9e3;
+    text-decoration: none;
+}
+        
+#content a:hover {
+    font-weight: bold;
 }
 
 form {
@@ -135,16 +145,6 @@ input {
 #hours {
     text-align: right;
     width: 20%;
-}
-        
-#content a:link, a:active, a:visited {
-    color: #003254;
-    background-color: #cfd9e3;
-    text-decoration: none;
-}
-        
-#content a:hover {
-    font-weight: bold;
 }
         
 table.schedule {
