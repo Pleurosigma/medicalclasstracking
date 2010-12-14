@@ -1,10 +1,13 @@
 <?php
-	session_start();
-	include('db_connect.php');
-	include('ClassGateway.php');
-	include('LDAPHelper.php');
-	include('StudentClassGateway.php');
-	include('TM.php');
+        session_start();
+	if(!isset($_SESSION['adminonyen'])){
+		header('Location: adminlogin.html');
+	}
+        include('db_connect.php');
+        include('ClassGateway.php');
+        include('LDAPHelper.php');
+        include('StudentClassGateway.php');
+        include('TM.php');
         include error_reporting(0);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"<html>
@@ -62,10 +65,10 @@
 <div id="addsearch" align="right">
 
 <form action="student_edit.php" method="post" onsubmit="return validate_form( this )">
-    <input type="text" id="addsearchtext" value="Onyen">
-        &nbsp;<input type="text" id="addsearchtext" value="Class code">
-        &nbsp;<input type="submit" value="Add" name="action" id="addsearchbutton">
-        &nbsp;<input type="submit" value="Delete" name="action" id="addsearchbutton">
+    <input type="text" id="addsearchtext" value="Onyen" name="onyen">
+        &nbsp;<input type="text" id="addsearchtext" value="Class code" name="classcode">
+        &nbsp;<input type="submit" value="ADD" name="action" id="addsearchbutton">
+        &nbsp;<input type="submit" value="DELETE" name="action" id="addsearchbutton">
 </form>
 
     <br><form action="adminreport.php" method="post" align="right">
@@ -119,14 +122,14 @@
             elseif($filterType=='equalhrs')
                     return $hrs != (int)$filterString;
             else
-                    return False;					
+                    return False;                                       
         }
     }
 //  Snagged by javierarce, from Snipplr
-    function getUniqueCode($length = "") {	
-	$code = md5(uniqid(rand(), true));
-	if ($length != "") return substr($code, 0, $length);
-	else return $code;
+    function getUniqueCode($length = "") {      
+        $code = md5(uniqid(rand(), true));
+        if ($length != "") return substr($code, 0, $length);
+        else return $code;
     }
     $a = StudentClassGateway::selectAllStudentClasses();
     $studentclasses = $a[0];
@@ -172,7 +175,7 @@
         echo '';
     }
 ?>
-		
+                
 </div>
 
 </body>

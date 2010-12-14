@@ -6,6 +6,9 @@
 	Update Nov 9, 2010: merged css with new	
 	*/
 	session_start();
+	if(!isset($_SESSION['adminonyen'])){
+		header('Location: adminlogin.html');
+	}
 	unset($_SESSION['newclass'])
 ?>
 <html>
