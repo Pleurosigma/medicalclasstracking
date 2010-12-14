@@ -23,7 +23,7 @@
 	<body>
 		<?php
 			selectDB(getConnection());
-			$backButton = '<br /><form action="student_report.php" method="link">
+			$backButton = '<br /><form action="adminreport.php" method="link">
 			<input type="submit" value="Back">
 			</form>';
 			$classCode = $_POST['classcode'];
@@ -31,12 +31,12 @@
 			$action = $_POST['action'];
 			$class = ClassGateway::selectClassByClassCode(strtoupper($classCode));
 			if($action == 'Add'){
-				if(StudentClassGateway::studentHasClass($onyen, $classCode)){
-					echo 'The student already has this class';
+				if(!$class){
+					echo 'No class with that class code found.';
 					echo $backButton;
 				}
-				elseif($class == null){
-					echo 'No class with that class code found.';
+				elseif(StudentClassGateway::studentHasClass($onyen, $classCode)){
+					echo 'The student already has this class';
 					echo $backButton;
 				}
 				else{
@@ -51,12 +51,12 @@
 				}
 			}
 			else{
-				if(!StudentClassGateway::studentHasClass($onyen, $classCode)){
-					echo 'The student is not in this class';
+				if(!$class){
+					echo 'No class with that class code found.';
 					echo $backButton;
 				}
-				elseif($class == null){
-					echo 'No class with that class code found.';
+				elseif(!StudentClassGateway::studentHasClass($onyen, $classCode)){
+					echo 'The student is not in this class';
 					echo $backButton;
 				}
 				else{
