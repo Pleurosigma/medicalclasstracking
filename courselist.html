@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Capstone</title>
+
+<link rel="stylesheet" type="text/css" href="default.css">
+
+</head>
+<body>
+
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a href="index.html">Student</a></li>
+    <li><a class="active" href="courselist.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+    
+<?php
+    //Set up db connection and select db
+    include("db_connect.php");
+    $con = getConnection();
+    selectDB($con); ?>
+
+<br><br>
+<table id="studentsched" class="schedule">
+<th class="invishead"></th><th>Code</th><th>Session</th><th>Faculty</th><th>Date</th><th>Day</th><th>Start time</th><th>End time</th><th>Credit hours</th>
+    <tr><td id="studschedinvis"><input type="checkbox"></input></td><td>INTRON&B</td><td>Introduction & Nuts and Bolts</td><td>Dr. Ana Felix</td><td>03-01-2010</td><td id="allcaps">Monday</td><td>8AM</td><td>9AM</td><td id="schedhours">1</td></tr>
+    <tr id="altbackground"><td id="studschedinvis"><input type="checkbox"></input></td><td>SOWB</td><td>Staying Out of the Witness Box</td><td>Ben Gilbert</td><td>03-01-2010</td><td id="allcaps">Monday</td><td>9AM</td><td>10AM</td><td id="schedhours">1</td></tr>
+    <tr><td id="studschedinvis"><input type="checkbox"></input></td><td>MHCB/AD</td><td>Medico-Legal Aspects of Healthcare: Case Based Learning/Alcohol Detox</td><td>Robert Gwyther</td><td>03-01-2010</td><td id="allcaps">Monday</td><td>10AM</td><td>12AM</td><td id="schedhours">2</td></tr>
+    </table>
+    
+<div id="dbadd">
+    &nbsp;<input type="submit" value="ADD A COURSE" id="addsearchbutton">
+    &nbsp;<input type="submit" value="EDIT A SELECTED COURSE" id="addsearchbutton">
+    &nbsp;<input type="submit" value="DELETE SELECTED COURSE(S)" id="addsearchbutton">
+</div>
+
+<!--List of names? and each name deleted from the list by click on it, or a remove all button-->
+<!--Class removal/deletion by click as well-->
+
+</div>
+</body>
+</html>
