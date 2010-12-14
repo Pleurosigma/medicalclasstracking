@@ -39,8 +39,8 @@
     }
     onload=hideall;
 </script>
-<script type = "text/javascript" src="validate.js"></script>
 
+<script type = "text/javascript" src="validate.js"></script>
 <link rel="stylesheet" type="text/css" href="default.css">
 
 </head>

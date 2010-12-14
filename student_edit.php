@@ -16,21 +16,39 @@
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html" />
-		<title> Student Edit </title>
-	</head>
-	<body>
+<head>
+        <title>Capstone</title>
+        <meta http-equiv="Content-Type" content="text/html" />
+        <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+<body>
+    
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a href="index.html">Student</a></li>
+    <li><a class="active" href="adminreport.php">Administrator</a></li>
+</ul>
+
+<div id="content">
+
 		<?php
 			selectDB(getConnection());
-			$backButton = '<br /><form action="adminreport.php" method="link">
-			<input type="submit" value="Back">
-			</form>';
-			$classCode = $_POST['classcode'];
+			
+                        $backButton = '<br><br><form action="adminreport.php" method="link"><input type="submit" value="BACK" id="button"></form>';
+			
+                        $classCode = $_POST['classcode'];
 			$onyen = $_POST['onyen'];
 			$action = $_POST['action'];
 			$class = ClassGateway::selectClassByClassCode(strtoupper($classCode));
-			if($action == 'Add'){
+			
+                        echo '<br><br>';
+                        
+                        if($action == 'ADD'){
 				if(!$class){
 					echo 'No class with that class code found.';
 					echo $backButton;
@@ -67,5 +85,8 @@
 				}
 			}
 		?>
-	</body>
-<html>
+                
+</div>
+
+</body>
+</html>
