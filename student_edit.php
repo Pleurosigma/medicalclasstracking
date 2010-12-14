@@ -6,6 +6,7 @@
 	*/
 	session_start();
 	include('db_connect.php');
+	include('LDAPHelper.php');
 	include('ClassGateway.php');
 	include('StudentClassGateway.php');
 	include('TM.php');
@@ -47,6 +48,10 @@
 			$class = ClassGateway::selectClassByClassCode($classCode);
 			if($class == false){
 				echo 'No class with that class code found.';
+				echo $backButton;
+			}
+			elseif(!LDAPHelper::getName($onyen)){
+				echo 'That is not an onyen.';
 				echo $backButton;
 			}
 			else{

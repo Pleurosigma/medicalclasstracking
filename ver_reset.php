@@ -41,11 +41,13 @@
 			<input type="submit" value="BACK" id="button">
 			</form>';
 			if($_SESSION['adminonyen'] != $onyen){
-				die('Please log in with your own information.' . $backButton);
+				die('Please log in with your own information if you wish to reset the website.' . $backButton);
 			}
 			if(LDAPHelper::authenticate($onyen, $password) && AdminDBTools::isAdmin($onyen)){
-				if(AdminDBTools::clearAll())
+				if(AdminDBTools::clearAll()){
 					echo 'Reset Complete';
+					unset($_SESSION['adminonyen']);
+				}
 				else
 					echo 'Reset Failed' . $backButton;
 			}

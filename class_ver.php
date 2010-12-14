@@ -6,6 +6,7 @@
 	include('db_connect.php');
 	include('TM.php');	
 	include("ClassGateway.php");
+	error_reporting(0);
 ?>
 <html>
 <!--
