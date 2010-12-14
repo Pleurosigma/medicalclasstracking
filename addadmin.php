@@ -7,7 +7,7 @@
 	session_start();
 	include('db_connect.php');
 	if(!isset($_SESSION['adminonyen'])){
-		//return to admin login
+		header('Location: adminlogin.html');
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
@@ -37,7 +37,7 @@
 
 <br><br><table id="dbtable"><tr><td>ADD/DELETE AN ADMINISTRATOR</td></tr></table><br><br>
         
-<form action="ver_addadmin.php" onsubmit="return validate_form( this )" id=" method="post">
+<form action="ver_addadmin.php" onsubmit="return validate_form( this )" id="" method="post">
 <label>Admin Onyen: </label><input type="text" name="adminonyen" title="Admin Onyen">
 <input type="submit" name="action" value="ADD" id="button"><input type="submit" name="action" value="DELETE" id="button">
 </form>

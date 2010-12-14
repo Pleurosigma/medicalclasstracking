@@ -6,7 +6,7 @@
 	*/
 	session_start();
 	if(!isset($_SESSION['adminonyen'])){
-		//return to login page
+		header('Location: adminlogin.html');
 	}
 ?>
 

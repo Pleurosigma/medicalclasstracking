@@ -1,10 +1,14 @@
 <?php
-	session_start();
-	include('db_connect.php');
-	include('ClassGateway.php');
-	include('LDAPHelper.php');
-	include('StudentClassGateway.php');
-	include('TM.php');
+        session_start();
+	if(!isset($_SESSION['adminonyen'])){
+		header('Location: adminlogin.html');
+	}
+        include('db_connect.php');
+        include('ClassGateway.php');
+        include('LDAPHelper.php');
+        include('StudentClassGateway.php');
+        include('TM.php');
+        include error_reporting(0);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"<html>
 <head>
@@ -53,18 +57,20 @@
 
 <ul id="tabmenu">
     <li><a href="index.html">Student</a></li>
-    <li><a class="active" href="adminreport.html">Administrator</a></li>
+    <li><a class="active" href="adminreport.php">Administrator</a></li>
 </ul>
 
 <div id="content">
 
 <div id="addsearch" align="right">
+
 <form action="student_edit.php" method="post" onsubmit="return validate_form( this )">
     <input type="text" id="addsearchtext" value="Onyen" name="onyen">
-        &nbsp;<input type="text" id="addsearchtext" name="classcode" value="Class code">
+        &nbsp;<input type="text" id="addsearchtext" value="Class code" name="classcode">
         &nbsp;<input type="submit" value="ADD" name="action" id="addsearchbutton">
         &nbsp;<input type="submit" value="DELETE" name="action" id="addsearchbutton">
 </form>
+
     <br><form action="adminreport.php" method="post" align="right">
         <select name="searchtype" style="color: color: #103d66;">
             <option value="nofilter">No filter</option>
@@ -80,10 +86,13 @@
 
 <?php
 
-    echo '<form action="courselist.php"><input type="submit" value="CLASS COURSELIST" id="addsearchbutton"></form><br><br>
+    $adminonyen = $_SESSION['adminonyen'];
+    $adminname = LDAPHelper::getName($adminonyen);
+    
+    echo '<form action="admintools.php"><input type="submit" value="ADMIN HOME" id="addsearchbutton"></form><br><br>
             <table id="adminreport">
                 <tr>
-                    <td id="admin">Dr. Ana Felix</td>
+                    <td id="admin">' . $adminname . '</td>
                 </tr>
                 <tr class="vis">
                     <th id="pid">Onyen</th>
@@ -113,14 +122,14 @@
             elseif($filterType=='equalhrs')
                     return $hrs != (int)$filterString;
             else
-                    return False;					
+                    return False;                                       
         }
     }
 //  Snagged by javierarce, from Snipplr
-    function getUniqueCode($length = "") {	
-	$code = md5(uniqid(rand(), true));
-	if ($length != "") return substr($code, 0, $length);
-	else return $code;
+    function getUniqueCode($length = "") {      
+        $code = md5(uniqid(rand(), true));
+        if ($length != "") return substr($code, 0, $length);
+        else return $code;
     }
     $a = StudentClassGateway::selectAllStudentClasses();
     $studentclasses = $a[0];
@@ -163,10 +172,10 @@
             }
     }
     if(!$resultgiven){
-        echo 'No Results <br>';
+        echo '';
     }
 ?>
-		
+                
 </div>
 
 </body>

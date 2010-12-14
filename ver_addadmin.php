@@ -8,7 +8,7 @@
 	include('db_connect.php');
 	include('AdminDBTools.php');
 	if(!isset($_SESSION['adminonyen']) || !isset($_POST['adminonyen'])){
-		//return to admin login
+		header('Location: adminlogin.html');
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
@@ -22,14 +22,14 @@
 			selectDB(getConnection());
 			$adminonyen = $_POST['adminonyen'];
 			$action = $_POST['action'];
-			if($action == 'Add'){
+			if($action == 'ADD'){
 				if(AdminDBTools::addAdmin(strtolower($adminonyen))){
 					echo "$adminonyen added as an admin.";
 				}else{
 					echo 'Admin could not be added. They may already be an admin.';
 				}
 			}
-			elseif($action == 'Delete'){
+			elseif($action == 'DELETE'){
 				if(AdminDBTools::numberAdmins() == 1){
 					echo 'You may not delete the last admin.';
 				}

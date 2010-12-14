@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+if(!isset($_SESSION['adminonyen'])){
+	header('Location: adminlogin.html');
+}
 include('db_connect.php');
 include('ClassGateway.php');
 selectDB(getConnection());
