@@ -89,6 +89,7 @@ input {
 }
     
 #button {
+    font: normal 12px arial;
     color: #103d66;
     margin-left: 5px;
 }
@@ -172,13 +173,6 @@ table.schedule td {
     text-align: right;
 }
 
-#hiddensched {
-    width: 80%;
-    margin-left: 20%;
-    margin-top: 4px;
-    margin-bottom: 4px;
-}
-
 #studentsched {
     font-size: 12px;
     width: 100%;
@@ -237,9 +231,11 @@ table.schedule td {
 #addsearchtext {
     font-size: 13px;
     margin-left: 8px;
+    margin-top: 2px;
 }
 
 #addsearchbutton {
+    font: normal 12px arial;
     color: #103d66;
     letter-spacing: 0px;
     margin-left: 3px;
