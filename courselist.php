@@ -1,3 +1,6 @@
+<?php        
+        include error_reporting(0);
+?>
 <html>
 <!--
 Author: Hanna Palmerton
@@ -64,7 +67,7 @@ return false;
     selectDB($con); 
 
     //Enter classes' information into report table
-    echo '<form action="adminreport.html"><input type="submit" value="ADMIN HOME" id="addsearchbutton"></form><br><br>
+    echo '<form action="admintools.php"><input type="submit" value="ADMIN HOME" id="addsearchbutton"></form><br><br>
             <table id="studentsched" class="schedule">
             <th class="invishead"></th><th>Code</th><th>Session</th><th>Faculty</th><th>Date</th><th>Day</th><th>Start time</th><th>End time</th><th>Standard grace</th><th>Credit hours</th>';
     echo '<FORM onSubmit="return isReady(this)" METHOD="post" NAME="myform" ACTION="">';
@@ -112,9 +115,9 @@ return false;
 
     echo '</table>';
     echo '<div id="addsearch">
-            &nbsp;<input onClick="setCount(-1,0)" type="submit" value="ADD A COURSE" id="addsearchbutton"></input>
-            &nbsp;<input onClick="setCount(' . $counter . ',1)" type="submit" value="EDIT A SELECTED COURSE" id="addsearchbutton"></input>
-            &nbsp;<input onClick="setCount(' . $counter . ',2)" type="submit" value="DELETE SELECTED COURSE(S)" id="addsearchbutton"></input>
+            &nbsp;<input onClick="setCount(-1,0)" type="submit" value="ADD A CLASS" id="addsearchbutton"></input>
+            &nbsp;<input onClick="setCount(' . $counter . ',1)" type="submit" value="EDIT A SELECTED CLASS" id="addsearchbutton"></input>
+            &nbsp;<input onClick="setCount(' . $counter . ',2)" type="submit" value="DELETE SELECTED CLASS(ES)" id="addsearchbutton"></input>
             </div>
             </FORM>';
 ?>
