@@ -59,10 +59,8 @@
         //If a class was found
         else{
                 $_SESSION['class'] = $class;
-                $inTime = TimeVerification::checkTime($_SESSION['class']['StartTime'], $_SESSION['class']['EndTime'], $_SESSION['class']['StandardGrace']);
-                //THIS VALUE SHOULD BE CHANGED TO $inTime when not testing the addition features
-                
-                if(1){
+                $inTime = TimeVerification::checkTime($_SESSION['class']['StartTime'], $_SESSION['class']['EndTime'], $_SESSION['class']['StandardGrace']);                
+                if($inTime){
                         echo 'Are you sure you want to add <b>' . $_SESSION['class']['ClassName'] . ' (' . TM::getStandardDateAndTime($_SESSION['class']['StartTime']) . ')</b>?<br>';
                         
                         echo '<form name="verify" action="add_student_class.php" method="post"><br>
