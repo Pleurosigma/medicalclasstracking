@@ -35,7 +35,7 @@
 				echo $backButton;
 			}
 			else{
-				if($action == 'Add'){
+				if($action == 'ADD'){
 					if(StudentClassGateway::studentHasClass($onyen, $classCode)){
 						echo 'The student already has this class';
 						echo $backButton;
