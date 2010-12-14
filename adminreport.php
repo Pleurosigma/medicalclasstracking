@@ -5,6 +5,7 @@
 	include('LDAPHelper.php');
 	include('StudentClassGateway.php');
 	include('TM.php');
+        include error_reporting(0);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"<html>
 <head>
@@ -52,14 +53,14 @@
 
 <ul id="tabmenu">
     <li><a href="index.html">Student</a></li>
-    <li><a class="active" href="adminreport.html">Administrator</a></li>
+    <li><a class="active" href="adminreport.php">Administrator</a></li>
 </ul>
 
 <div id="content">
 
 <div id="addsearch" align="right">
-    <input type="text" id="addsearchtext" value="Onyen">
-        &nbsp;<input type="text" id="addsearchtext" value="Class code">
+    <input type="text" id="addsearchtext" onClick="SelectAll('addsearchtext');" value="Onyen">
+        &nbsp;<input type="text" id="addsearchtext" onClick="SelectAll('addsearchtext');" value="Class code">
         &nbsp;<input type="submit" value="ADD" name="action" id="addsearchbutton">
         &nbsp;<input type="submit" value="DELETE" name="action" id="addsearchbutton">
     <br><form action="adminreport.php" method="post" align="right">
@@ -77,10 +78,13 @@
 
 <?php
 
-    echo '<form action="courselist.php"><input type="submit" value="CLASS COURSELIST" id="addsearchbutton"></form><br><br>
+    $adminonyen = $_SESSION['adminonyen'];
+    $adminname = LDAPHelper::getName($adminonyen);
+    
+    echo '<form action="admintools.php"><input type="submit" value="ADMIN HOME" id="addsearchbutton"></form><br><br>
             <table id="adminreport">
                 <tr>
-                    <td id="admin">Dr. Ana Felix</td>
+                    <td id="admin">' . $adminname . '</td>
                 </tr>
                 <tr class="vis">
                     <th id="pid">Onyen</th>
@@ -160,7 +164,7 @@
             }
     }
     if(!$resultgiven){
-        echo 'No Results <br>';
+        echo '';
     }
 ?>
 		

@@ -38,7 +38,8 @@ A page to delete the class from the database;
         $_SESSION['classCodes'] = $_POST['boxes'];
         
         echo 'Are you sure you want to delete these courses?';
-        echo '<br><br><table id="studentsched" class="schedule">';
+        echo '<br><br><table id="studentsched" class="schedule">
+                <tr><th>Code</th><th>Session</th><th>Faculty</th><th>Date</th><th>Day</th><th>Start time</th><th>End time</th><th>Standard grace</th><th>Credit hours</th></tr>';
         
         foreach($_SESSION['classCodes'] as $code) {
             $class = ClassGateway::selectClassByClassCode($code);
