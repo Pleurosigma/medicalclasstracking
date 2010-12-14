@@ -30,7 +30,7 @@
 
 if(!isset($_SESSION['adminonyen'])){
 	echo 'You were not logged in. <br>';
-	echo '<br><form action="adminlogin.html" method="link"><input type="submit" value="BACK"></form>';
+	echo '<br><form action="adminlogin.html" method="link"><input type="submit" value="BACK" id="button"></form>';
 	die();
 }
 
