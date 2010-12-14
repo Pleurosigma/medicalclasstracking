@@ -1,4 +1,8 @@
 <?php
+	/**
+	Author: Logan Wilkerson
+	The Admin's student_report
+	*/
 	session_start();
 	include('db_connect.php');
 	include('ClassGateway.php');

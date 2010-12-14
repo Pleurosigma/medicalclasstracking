@@ -40,11 +40,11 @@
                     <input class="dateinput" type="text" name="day" title="Day" value="dd"><br>
 <label>Start time:</label><input type="text" class="timeinput" name="starttimehr" title="Start time Hour" value="hh">
                     <input class="timeinput" type="text" name="starttimemin" title="Start Time Minute" value="mm">
-                    &nbsp;<input type="radio" name="amstart" value="AM"> AM</input>
+                    &nbsp;<input type="radio" name="amstart" value="AM" checked> AM</input>
                     &nbsp;&nbsp;<input type="radio" name="amstart" value="PM"> PM</input><br>
 <label>End time:</label><input type="text" class="timeinput" name="endtimehr" title="End Time Hour" value="hh"> 
                     <input type="text" class="timeinput" name="endtimemin" title="End Time Minute" value="mm">
-                    &nbsp;<input type="radio" name="amend" value="AM"> AM</input>
+                    &nbsp;<input type="radio" name="amend" value="AM" checked> AM</input>
                     &nbsp;&nbsp;<input type="radio" name="amend" value="PM"> PM</input><br>
 <label>Grace Period:</label><input type="radio" name="grace" title="Day Grace" value="0" checked> SAME DAY UNTIL 8PM</input><br>
 <label></label><input type="radio" name="grace" title="Standard Grace" value="1"> 15 MINUTES</input><br>
