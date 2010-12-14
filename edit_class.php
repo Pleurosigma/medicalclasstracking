@@ -3,6 +3,9 @@
 	include('TM.php');	
 	include("ClassGateway.php");
         unset($_SESSION['editedclass']);
+	if(!isset($_POST["boxes"])){
+		header('Location: courselist.php');
+	}
 	if(!isset($_SESSION['adminonyen'])){
 		header('Location: adminlogin.html');
 	}
