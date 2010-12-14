@@ -56,9 +56,7 @@
 				}
 			}
 		?>		
-		<form action="addadmin.php" method="link">
-                <br><input type="submit" value="BACK" id="button"></input>
-		</form>
+		<br><br><form action="addadmin.php" method="link"><input type="submit" value="BACK" id="button"></input></form>
 </div>
 
 </body>
