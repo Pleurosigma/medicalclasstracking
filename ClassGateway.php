@@ -93,7 +93,12 @@
 		Returns true if the class code is already in use;
 		*/
 		public static function isClassCodeRedundant($ClassCode){
-			return ClassGateway::selectClassByClassCode($ClassCode);
+			if(ClassGateway::selectClassByClassCode($ClassCode)){
+				return true;
+			}
+			else{
+				return false;
+			}
 		}
 
 			
