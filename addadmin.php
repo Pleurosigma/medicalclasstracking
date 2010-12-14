@@ -29,8 +29,8 @@
 </table>
 
 <ul id="tabmenu">
-    <li><a class="active" href="index.html">Student</a></li>
-    <li><a href="addadmin.php">Administrator</a></li>
+    <li><a href="index.html">Student</a></li>
+    <li><a class="active" href="addadmin.php">Administrator</a></li>
 </ul>
 
 <div id="content">
