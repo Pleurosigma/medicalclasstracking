@@ -12,6 +12,7 @@
 	*/
 	selectDB(getConnection());
 	if(!isset($_POST['adminonyen'])){
+		unset($_SESSION['adminonyen']);
 		header('Location: admintools.php');
 	}
 	else{
@@ -29,10 +30,12 @@
 				header('Location: admintools.php');
 			}
 			else{
+				unset($_SESSION['adminonyen']);
 				header('Location: admintools.php');
 			}
 		}
 		else{
+			unset($_SESSION['adminonyen']);
 			header('Location: admintools.php');
 		}
 	}
