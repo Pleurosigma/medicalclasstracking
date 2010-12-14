@@ -115,7 +115,7 @@ input {
 }
         
 #adminreport td {
-    background: #cfd9e3;
+    background-color: #cfd9e3;
     border: 1px solid #103d66;
     padding: 2px;
 }
@@ -138,8 +138,8 @@ input {
 }
         
 #content a, a:link, a:active, a:visited {
-    font: inherit;
     color: #003254;
+    background-color: #cfd9e3;
     text-decoration: none;
 }
         
