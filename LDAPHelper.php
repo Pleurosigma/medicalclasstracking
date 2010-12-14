@@ -24,7 +24,7 @@
 				if($info['count'] != 1){
 					return false;
 				}
-				$authenticated = ldap_bind($ds, $info[0]['dn'], $password);
+				$authenticated = @ldap_bind($ds, $info[0]['dn'], $password);
 				ldap_close($ds);
 				if($authenticated){
 					return true;
@@ -34,7 +34,7 @@
 				}
 			}
 			else{
-				die("Could not connect to LDAP server to verify onyen.");
+//				die("Could not connect to LDAP server to verify onyen.");
 			}
 		}
 		

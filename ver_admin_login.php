@@ -3,6 +3,7 @@
 	include('db_connect.php');
 	include('LDAPHelper.php');
 	include('AdminDBTools.php');
+	error_reporting(0);
         
         /**
 	Author: Logan Wilkerosn
