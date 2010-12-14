@@ -1,0 +1,269 @@
+
+body {
+    background: #FFFFFF;
+}
+        
+#header {
+    background: url(gradient2-1.jpg);
+    background-size: 100%;
+    width: 100%;
+    border-collapse: separate:
+} 
+
+#tabmenu {
+    background-color: #003254;
+    border: 0px solid black;
+    z-index: 1;
+    padding: 0px 0px 3px 59px;
+    margin: -1px 0px 0px 0px;
+}
+
+#tabmenu li {
+    display: inline;
+    overflow: hidden;
+    list-style-type: none;
+}
+        
+#tabmenu a, a:visited {
+    font: normal 12px georgia;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #103d66;
+    opacity: 0.8;
+    padding: 5px 6px 5px 6px;
+    margin: 0px 1px 0px 1px;
+}
+	
+#tabmenu a.active {
+    color: #003254;
+    background: #FFFFFF;
+}
+        
+#tabmenu a:hover {
+    color: #cfd9e3;
+}
+        
+#tabmenu a.active:hover {
+    color: #003254;
+}
+
+#content {
+    font: normal 13px 'times new roman';
+    color: #103d66;
+    text-align: justify;
+    background: url(gradient3.jpg);
+    background-repeat: repeat-x;
+    opacity: 0.8;
+    padding: 25px;
+    border: 0px solid #103d66;
+    z-index: 2;	
+}
+
+form {
+    display: inline;
+}
+
+label {
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: right;
+    margin: 6px 8px 0px 0px;
+    width: 110px;
+    float: left;
+}
+
+input {                
+    font: 15px arial;
+    text-align: right;
+    letter-spacing: 1px;
+}
+        
+#ID {
+    margin-bottom: 2px;
+}
+        
+#password {
+    margin-top: 2px;
+}
+    
+#button {
+    color: #103d66;
+    margin-left: 5px;
+}
+                
+#adminreport {
+    font: inherit;
+    color: #003254;
+    border: 0px;
+    border-collapse: separate;
+    width: 100%;
+}
+        
+#adminreport th {
+    font: 600 12px georgia;
+    color: #cfd9e3;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+    background: url(gradient2-1.jpg);
+    background-size: 100%;
+    border: 1px solid #103d66;
+    padding: 2px;
+}
+        
+#adminreport td {
+    background: #cfd9e3;
+    border: 1px solid #103d66;
+    padding: 2px;
+}
+                
+#admin {
+    font-weight: bold;
+}
+        
+#pid {
+    width: 20%;
+}
+        
+#name {
+    width: 60%;
+}
+        
+#hours {
+    text-align: right;
+    width: 20%;
+}
+        
+#content a, a:link, a:active, a:visited {
+    color: #003254;
+    text-decoration: none;
+}
+        
+#content a:hover {
+    font-weight: bold;
+}
+        
+table.schedule {
+    font: normal 10px arial;
+    color: #003254;
+}
+        
+table.schedule th {
+    font: 500 10px georgia;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+    background-color: #FFFFFF;
+    border: 1px solid #103d66;
+    padding: 2px;
+}
+        
+table.schedule td {
+    border: 1px solid #cfd9e3;
+}
+
+#allcaps {
+    text-transform: uppercase;
+}
+
+#schedhours {
+    text-align: right;
+}
+
+#hiddensched {
+    width: 80%;
+    margin-left: 20%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+#studentsched {
+    font-size: 12px;
+    width: 100%;
+}
+
+#studentsched th {
+    font-size: 11px;
+    font-weight: bold;
+    background: #cfd9e3;
+    border: 1px solid #103d66;
+    padding: 2px;
+}
+
+#studentsched th.invishead {
+    background: #FFFFFF;
+    border: 0px;
+}
+
+#student {
+    font: bold 12px georgia;
+    text-transform: uppercase;
+    background: #FFFFFF;
+    border: 1px solid #103d66;
+    padding: 2px;
+}
+
+#studschedvis {
+    font: bold 11px georgia;
+    text-transform: uppercase;
+    background: #FFFFFF;
+    border: 1px solid #103d66;
+    padding: 2px;
+}
+
+#studschedinvis {
+    text-align: center;
+    border: 0px;
+}
+
+#altbackground {
+    background: #cfd9e3;
+}
+
+#addsearch {
+    border: 0px;
+    position: absolute;
+    right: 34px;
+    top: 110px;
+}
+
+#addsearch select, option {
+    color: #103d66;
+    width: 225px;
+}
+
+#addsearchtext {
+    font-size: 13px;
+    margin-left: 8px;
+}
+
+#addsearchbutton {
+    color: #103d66;
+    letter-spacing: 0px;
+    margin-left: 3px;
+}
+
+#dbtable {
+    font: bold 12px georgia;
+    color: #003254;
+    background: #cfd9e3;
+    border: 1px solid #103d66;
+    width:100%;
+    padding: 2px;
+}
+
+#addclassform input {
+    margin: 5px 0px 5px 0px;
+}
+
+input.dateinput {
+    width: 58px;
+    margin-left: 2px;
+}
+
+input.timeinput {
+    width: 89px;
+    margin-left: 2px;
+}

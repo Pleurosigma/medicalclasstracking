@@ -1,0 +1,57 @@
+<html>
+<head>
+
+<script type = "text/javascript">
+    function validate_required(field, alerttxt) {
+        with(field){
+            if(value == null || value == ""){
+                alert(alerttxt);
+                return false;
+            }
+            else {
+                var iChars = "\"!@#$%^&*()+=-[]{}\';,./|:<>?";
+                for(var i = 0; i < value.length; i++){
+                    if(iChars.indexOf(value.charAt(i)) != -1){
+                        alert("No Special Characters");
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+    }
+    
+    function validate_form(thisform) {
+        with(thisform){
+            return validate_required(pid, "PID Must be filled out");
+        }
+    }
+</script>
+
+<link rel="stylesheet" type="text/css" href="default.css">
+
+</head>
+<body>
+
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a class="active" href="mainindex.html">Student</a></li>
+    <li><a href="testheader2-more.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+
+<form action="login2(redraft).php" onsubmit="return validate_form(this)" method="post">
+<br><br><label>PID:</label><input type="text" id="ID" name="pid">&nbsp;<input type="submit" value="LOG IN" id="button">
+</form>
+<label>&nbsp;</label><i>Please do not use a hyphen when entering your PID; e.g. 432156789, not 4321-56789.</i>
+
+</div>
+
+</body>
+</html>
