@@ -138,6 +138,7 @@ input {
 }
         
 #content a, a:link, a:active, a:visited {
+    font: inherit;
     color: #003254;
     text-decoration: none;
 }
