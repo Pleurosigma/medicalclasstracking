@@ -1,4 +1,8 @@
 <?php        
+	session_start();
+	if(!isset($_SESSION['adminonyen'])){
+		header('Location: adminlogin.html');
+	}
         include error_reporting(0);
 ?>
 <html>

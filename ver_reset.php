@@ -8,7 +8,7 @@
 	include('LDAPHelper.php');
 	include('AdminDBTools.php');
 	if(!isset($_SESSION['adminonyen']) || !isset($_POST['adminonyen'])){
-		//return to admin login
+		header('Location: adminlogin.html');
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
