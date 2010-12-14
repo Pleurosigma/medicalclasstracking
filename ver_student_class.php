@@ -59,22 +59,35 @@
         //If a class was found
         else{
                 $_SESSION['class'] = $class;
-                $inTime = TimeVerification::checkTime($_SESSION['class']['StartTime'], $_SESSION['class']['EndTime'], $_SESSION['class']['StandardGrace']);                
-                if($inTime){
-                        echo 'Are you sure you want to add <b>' . $_SESSION['class']['ClassName'] . ' (' . TM::getStandardDateAndTime($_SESSION['class']['StartTime']) . ')</b>?<br>';
-                        
-                        echo '<form name="verify" action="add_student_class.php" method="post"><br>
-                                <input type="radio" name="add" value="1" checked>Yes<br>
-                                <input type="radio" name="add" value="0">No<br><br>
-                                <input type="submit" id="addsearchbutton" value="SUBMIT">
-                                </form>';
-                }
-                //If it is not a valid entry time
-                else{
-                    $className = $_SESSION['class']['ClassName'];
-                    echo 'You may not sign up for <b>' . $className . '</b> at this time.';
-                    echo $backButton; 
-                }
+		$studentclass = StudentClassGateway::selectStudentClassesByOnyen($_SESSION['onyen']);
+		$overlap = false;
+		if($studentclass){
+			foreach($studentclass as $c){
+				$overlap = $overlap || TimeVerification::timesOverlap($_SESSION['class']['StartTime'], $_SESSION['class']['EndTime'], $c['StartTime'], $c['EndTime']);
+			}
+		}
+		if($overlap){
+			echo 'You may not add overlapping classes.';
+			echo $backButton;
+		}
+		else{
+			$inTime = TimeVerification::checkTime($_SESSION['class']['StartTime'], $_SESSION['class']['EndTime'], $_SESSION['class']['StandardGrace']);                
+			if($inTime){
+				echo 'Are you sure you want to add <b>' . $_SESSION['class']['ClassName'] . ' (' . TM::getStandardDateAndTime($_SESSION['class']['StartTime']) . ')</b>?<br>';
+				
+				echo '<form name="verify" action="add_student_class.php" method="post"><br>
+					<input type="radio" name="add" value="1" checked>Yes<br>
+					<input type="radio" name="add" value="0">No<br><br>
+					<input type="submit" id="addsearchbutton" value="SUBMIT">
+					</form>';
+			}
+			//If it is not a valid entry time
+			else{
+			    $className = $_SESSION['class']['ClassName'];
+			    echo 'You may not sign up for <b>' . $className . '</b> at this time.';
+			    echo $backButton; 
+			}
+		}
         }
 ?>
 

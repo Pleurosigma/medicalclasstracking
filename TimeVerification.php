@@ -21,5 +21,17 @@
 				return false;
 			}	
 		}
+		
+		public static function timesOverlap($starttimeone, $endtimeone, $starttimetwo, $endtimetwo){
+			$startone = new DateTime($starttimeone);
+			$endone = new DateTime($endtimeone);
+			$starttwo = new DateTime($starttimetwo);
+			$endtwo = new DateTime($endtimetwo);
+			
+			if(($startone < $endtwo && $endone > $starttwo) || ($startone == $endtwo && $endone == $starttwo)){
+				return true;
+			}
+			return false;
+		}
 	}
 ?>
