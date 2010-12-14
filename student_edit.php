@@ -62,11 +62,11 @@
 					}
 					else{
 						if(StudentClassGateway::insertStudentClass($onyen, $classCode)){
-							echo $class['ClassName'] . '(' . TM::getStandardDateAndTime($class['StartTime']) .') was added for ' . $onyen;
+							echo '<b>' . $class['ClassName'] . ' (' . TM::getStandardDateAndTime($class['StartTime']) .')<b> was added for <b>' . $onyen . '<b>.';
 							echo $backButton;						
 						}
 						else{
-							echo 'The class could not be added';
+							echo 'This class could not be added';
 							echo $backButton;
 						}
 					}
@@ -78,7 +78,7 @@
 					}
 					else{
 						if(StudentClassGateway::deleteStudentClass($onyen, $classCode)){
-							echo $class['ClassName'] . '(' . TM::getStandardDateAndTime($class['StartTime']) .') was removed for ' . $onyen;
+							echo '<b>' . $class['ClassName'] . ' (' . TM::getStandardDateAndTime($class['StartTime']) .')</b> was removed for <b>' . $onyen . '<b>';
 							echo $backButton;
 						}
 					}

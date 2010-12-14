@@ -93,7 +93,7 @@ Update Nov 9, 2010: merge css with new
 		$flag = ClassGateway::isClassCodeRedundant($classCode);		
 	}
 	if($resetflag){		
-		echo 'Page refresh detected. Return to <a href="admintools.php">Admin home</a></br>';	
+		echo 'Page refresh detected. Return to <form action="admintools.php"><input type="submit" value="Admin home" id="button"></form></a></br>';	
 	}
 	elseif(!ClassGateway::insertClass($classCode, $className, $startTime, $endTime, $credits, $faculty, $grace)){
 		echo "There was an error.";
