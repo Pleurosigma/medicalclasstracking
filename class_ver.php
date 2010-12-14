@@ -42,9 +42,6 @@ Update Nov 9, 2010: merge css with new
 	//Set up db connection and select db
 	$con = getConnection();
 	selectDB($con);
-	
-	//Get Post Values
-	include("db_class_functions.php");
         
         //Class name
 	$className = $_POST["classname"];
@@ -88,8 +85,8 @@ Update Nov 9, 2010: merge css with new
 	$classCode = "";
 	$flag = true;
 	while($flag){	
-		$classCode = getClassCode($className);
-		$flag = isClassCodeRedundant($classCode);		
+		$classCode = ClassGateway::getClassCode($className);
+		$flag = ClassGateway::isClassCodeRedundant($classCode);		
 	}
 	if($resetflag){		
 		echo 'Page refresh detected. I\'m just gonna stop now.</br>';	
