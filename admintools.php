@@ -30,7 +30,7 @@
 
 if(!isset($_SESSION['adminonyen'])){
 	echo 'You were not logged in. <br>';
-	echo '<br><form action="adminlogin.html" method="link"><input type="submit" value="BACK" id="button"></form>';
+	echo '<br><form action="adminlogin.html" method="link"><input type="submit" value="BACK"></form>';
 	die();
 }
 
@@ -41,8 +41,10 @@ echo '<div id="addsearch">
         <form action="adminlogout.php" method="link">&nbsp;<input type="submit" value="LOG OUT" id="addsearchbutton">
         </form></div>
         
-        <br><br><table id="dbtable"><tr><td>' . $adminname . '</td></tr></table><br><br>
-
+        <br><br><table id="dbtable"><tr><td>' . $adminname . '</td>
+                <td style="text-align: right; font-weight: normal;"><i>Please be sure to log out after each visit to ensure your security for admin functionality.</i></td>
+                </tr></table><br><br>
+        
         <form action="adminreport.php" method="link"><input type="submit" value="ADMIN REPORT" id="button"></input></form><br><br>
         <form action="courselist.php" method="link"><input type="submit" value="CLASS COURSELIST" id="button"></input></form><br><br>
         <form action="addadmin.php" method="link"><input type="submit" value="ADD/DELETE ADMINISTRATOR(S)" id="button"></input></form><br><br>
