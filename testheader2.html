@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>Capstone</title>
+    
+<style type="text/css">
+	body {
+		background: #FFFFFF;
+        }
+        
+        #header {
+                background: url(gradient2.jpg);
+                background-size: 100%;
+                width: 100%;
+                border-collapse: separate:
+        } 
+
+	#tabmenu {
+                background-color: #003254;
+		border: 0px solid black;
+		z-index: 1;
+		padding: 0px 0px 4px 59px;
+                margin: -1px 0px 0px 0px;
+        }
+
+	#tabmenu li {
+		display: inline;
+		overflow: hidden;
+		list-style-type: none;
+        }
+        
+        #tabmenu a, a:visited {
+                font: normal 12px georgia;
+                color: #FFFFFF;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                text-decoration: none;
+                background: #103d66;
+                opacity: 0.8;
+                padding: 5px 6px 5px 6px;
+                margin: 0px 1px 0px 1px;
+        }
+	
+	#tabmenu a.active {
+                color: #003254;
+                background: #FFFFFF;
+        }
+        
+        #tabmenu a:hover {
+                color: #cfd9e3;
+        }
+        
+        #tabmenu a.active:hover {
+                color: #003254;
+        }
+
+	#content {
+                font: normal 13px 'times new roman';
+                color: #103d66;
+		text-align: justify;
+		background: url(gradient3.jpg);
+                background-repeat:repeat-x;
+                opacity: 0.8;
+		padding: 25px;
+		border: 0px solid #103d66;
+		z-index: 2;	
+        }
+
+        label {
+                font-size: 14px;
+                text-transform: uppercase;
+                text-align: right;
+                margin: 6px 8px 0px 0px;
+                width: 110px;
+                float: left;
+        }
+        
+        input {                
+                font: 15px arial;
+                text-align: right;
+                letter-spacing: 1px;
+        }
+        
+        #ID {
+                margin-bottom: 2px;
+        }
+        
+        #password {
+                margin-top: 2px;
+        }
+    
+        #button {
+                color: #103d66;
+                margin-left: 5px;
+        }
+	</style>
+</head>
+
+<body>
+    
+<table id="header">
+    <tr valign='top'>
+        <td><img src='file:///Users/HBPYJAMA/University/2010-2011/COMP523/somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a class="active" href="./testheader2.html">Student</a></li>
+    <li><a href="./testheader2-more.html">Administrator</a></li>
+</ul>
+
+<div id="content">
+
+<form>
+<br><br><label>Pid:</label><input type="text" name = "pid">&nbsp;<input type="submit" value="LOG IN" id="button">
+</form>
+<label>&nbsp;</label><i>Please do not use a hyphen when entering your PID; e.g. 432156789, not 4321-56789.</i>
+
+</div>
+
+</body>
+</html>
