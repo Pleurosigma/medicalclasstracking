@@ -13,36 +13,53 @@
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html" />
-		<title> Add Admin</title>
-	</head>
-	<body>
+<head>
+        <title>Capstone</title>
+        <meta http-equiv="Content-Type" content="text/html" />
+        <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+<body>
+    
+<table id="header">
+    <tr valign='top'>
+        <td><img src='somLogo.gif' alt="Userpic" height='50px'></td>
+    </tr>
+</table>
+
+<ul id="tabmenu">
+    <li><a href="index.html">Student</a></li>
+    <li><a class="active" href="adminreport.php">Administrator</a></li>
+</ul>
+
+<div id="content">
+
 		<?php
 			selectDB(getConnection());
 			$adminonyen = $_POST['adminonyen'];
 			$action = $_POST['action'];
 			if($action == 'ADD'){
 				if(AdminDBTools::addAdmin(strtolower($adminonyen))){
-					echo "$adminonyen added as an admin.";
+					echo "<b>$adminonyen</b> has been added as an admininistrator.";
 				}else{
 					echo 'Admin could not be added. They may already be an admin.';
 				}
 			}
 			elseif($action == 'DELETE'){
 				if(AdminDBTools::numberAdmins() == 1){
-					echo 'You may not delete the last admin.';
+					echo 'You may not delete the last administrator.';
 				}
 				elseif(strtolower($_SESSION['adminonyen']) == strtolower($adminonyen)){
 					echo 'You may not delete yourself.';
 				}
 				elseif(AdminDBTools::deleteAdmin($adminonyen)){
-					echo "$adminonyen is no longer an admin.";
+					echo "<b>$adminonyen</b> is no longer an administrator.";
 				}
 			}
 		?>		
 		<form action="addadmin.php" method="link">
-			<input type="submit" value="Back">
+                <br><input type="submit" value="BACK" id="button"></input>
 		</form>
-	</body>
+</div>
+
+</body>
 </html>
