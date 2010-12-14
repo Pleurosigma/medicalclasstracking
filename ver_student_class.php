@@ -62,7 +62,8 @@
 		$studentclass = StudentClassGateway::selectStudentClassesByOnyen($_SESSION['onyen']);
 		$overlap = false;
 		if($studentclass){
-			foreach($studentclass as $c){
+			foreach($studentclass as $sc){
+				$c = ClassGateway::selectClassByClassCode($sc['ClassCode']);
 				$overlap = $overlap || TimeVerification::timesOverlap($_SESSION['class']['StartTime'], $_SESSION['class']['EndTime'], $c['StartTime'], $c['EndTime']);
 			}
 		}

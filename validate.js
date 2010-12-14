@@ -2,7 +2,7 @@ function validate(txt, fieldTitle, fieldName){
 	if(fieldTitle == undefined){
 		return true;
 	}
-	var iChars = "\\\"[]{}|~`!@#$%^*()-_+=;'<>,?.";
+	var iChars = "\\\"[]{}|~`!@#$%^*()-+=;'<>,?.";
 	if((txt == null || txt == "") && fieldName != "adminpassword"){
 		alert(fieldTitle + " must be filled out.");
 		return false;
