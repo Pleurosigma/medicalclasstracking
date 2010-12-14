@@ -55,7 +55,6 @@
 		}
 		if(isset($_SESSION['onyen'])){
 			selectDB(getConnection());
-			echo 'test';
 			//Adds a student class if one is found
 			if(isset($_SESSION['class'])){
 				$add = (int)$_POST['add'];
