@@ -62,7 +62,7 @@
 					}
 					else{
 						if(StudentClassGateway::insertStudentClass($onyen, $classCode)){
-							echo '<b>' . $class['ClassName'] . ' (' . TM::getStandardDateAndTime($class['StartTime']) .')<b> was added for <b>' . $onyen . '<b>.';
+							echo '<b>' . $class['ClassName'] . ' (' . TM::getStandardDateAndTime($class['StartTime']) .')</b> was added for <b>' . $onyen . '<b>.';
 							echo $backButton;						
 						}
 						else{
