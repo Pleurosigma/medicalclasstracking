@@ -26,43 +26,41 @@
 			$backButton = '<br /><form action="adminreport.php" method="link">
 			<input type="submit" value="Back">
 			</form>';
-			$classCode = $_POST['classcode'];
+			$classCode = strtoupper($_POST['classcode']);
 			$onyen = $_POST['onyen'];
 			$action = $_POST['action'];
-			$class = ClassGateway::selectClassByClassCode(strtoupper($classCode));
-			if($action == 'Add'){
-				if(!$class){
-					echo 'No class with that class code found.';
-					echo $backButton;
-				}
-				elseif(StudentClassGateway::studentHasClass($onyen, $classCode)){
-					echo 'The student already has this class';
-					echo $backButton;
-				}
-				else{
-					if(StudentClassGateway::insertStudentClass($onyen, $classCode)){
-						echo $class['ClassName'] . '(' . TM::getStandardDateAndTime($class['StartTime']) .') was added for ' . $onyen;
-						echo $backButton;						
-					}
-					else{
-						echo 'The class could not be added';
-						echo $backButton;
-					}
-				}
+			$class = ClassGateway::selectClassByClassCode($classCode);
+			if($class == false){
+				echo 'No class with that class code found.';
+				echo $backButton;
 			}
 			else{
-				if(!$class){
-					echo 'No class with that class code found.';
-					echo $backButton;
-				}
-				elseif(!StudentClassGateway::studentHasClass($onyen, $classCode)){
-					echo 'The student is not in this class';
-					echo $backButton;
+				if($action == 'Add'){
+					if(StudentClassGateway::studentHasClass($onyen, $classCode)){
+						echo 'The student already has this class';
+						echo $backButton;
+					}
+					else{
+						if(StudentClassGateway::insertStudentClass($onyen, $classCode)){
+							echo $class['ClassName'] . '(' . TM::getStandardDateAndTime($class['StartTime']) .') was added for ' . $onyen;
+							echo $backButton;						
+						}
+						else{
+							echo 'The class could not be added';
+							echo $backButton;
+						}
+					}
 				}
 				else{
-					if(StudentClassGateway::deleteStudentClass($onyen, $classCode)){
-						echo $class['ClassName'] . '(' . TM::getStandardDateAndTime($class['StartTime']) .') was removed for ' . $onyen;
+					if(!StudentClassGateway::studentHasClass($onyen, $classCode)){
+						echo 'The student is not in this class';
 						echo $backButton;
+					}
+					else{
+						if(StudentClassGateway::deleteStudentClass($onyen, $classCode)){
+							echo $class['ClassName'] . '(' . TM::getStandardDateAndTime($class['StartTime']) .') was removed for ' . $onyen;
+							echo $backButton;
+						}
 					}
 				}
 			}

@@ -60,8 +60,8 @@
 
 <div id="addsearch" align="right">
 <form action="student_edit.php" method="post" onsubmit="return validate_form( this )">
-    <input type="text" id="addsearchtext" value="Onyen">
-        &nbsp;<input type="text" id="addsearchtext" value="Class code">
+    <input type="text" id="addsearchtext" value="Onyen" name="onyen">
+        &nbsp;<input type="text" id="addsearchtext" name="classcode" value="Class code">
         &nbsp;<input type="submit" value="Add" name="action" id="addsearchbutton">
         &nbsp;<input type="submit" value="Delete" name="action" id="addsearchbutton">
 </form>
