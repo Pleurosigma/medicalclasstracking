@@ -92,7 +92,7 @@ Update Nov 9, 2010: merge css with new
 		$flag = ClassGateway::isClassCodeRedundant($classCode);		
 	}
 	if($resetflag){		
-		echo 'Page refresh detected. I\'m just gonna stop now.</br>';	
+		echo 'Page refresh detected. Return to <a href="admintools.php">Admin home</a></br>';	
 	}
 	elseif(!ClassGateway::insertClass($classCode, $className, $startTime, $endTime, $credits, $faculty, $grace)){
 		echo "There was an error.";
@@ -109,9 +109,7 @@ Update Nov 9, 2010: merge css with new
                         <td>' . $graceValue . '</td>
                         <td id="schedhours">' . $credits . '</td></tr>
                         </table>';
-                echo '<br><form action="add_class.php"><input type="submit" value="Add another course" id="button"></form>
-                        <input type="submit" value="Edit this course" id="button">
-                        <input type="submit" value="Delete this course" id="button">';
+                echo '<br><br><form action="add_class.php"><input type="submit" value="ADD ANOTHER COURSE" id="button"></form>';
                 echo '<div id="addsearch"><form action="courselist.php"><input type="submit" value="RETURN TO COURSELIST" id="addsearchbutton"></form></div>';
                 $_SESSION['newclass'] = 'omg';
         }

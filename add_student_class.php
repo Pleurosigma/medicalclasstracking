@@ -37,6 +37,8 @@
 
 <div id="content">
     <?php
+                $backButton = '<br><br><form action="index.html" method="link"><input type="submit" value="BACK" id="button"></form>';
+                
 		if(isset($_POST['onyen'])){
 			$onyen = $_POST['onyen'];
 			$password = $_POST['password'];
@@ -47,19 +49,17 @@
 				$_SESSION['onyen'] = $onyen;
 			}
 			else{
-				echo 'You were not logged in :(<br />';
+				echo 'You were not logged in :(';
+                                echo $backButton;
 			}
 		}
 		if(!isset($_SESSION['onyen'])){
-			echo 'Please return to login page. <br />';
-			echo '
-			<form action="index.html" method="link">
-				<input type="submit" value="Back">
-			</form>
-			';
+			echo 'Please return to login page.';
+			echo $backButton;
 		}
 		if(isset($_SESSION['onyen'])){
 			selectDB(getConnection());
+                        
 			//Adds a student class if one is found
 			if(isset($_SESSION['class'])){
 				$add = (int)$_POST['add'];
