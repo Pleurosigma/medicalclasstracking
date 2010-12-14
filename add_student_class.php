@@ -49,8 +49,7 @@
 				$_SESSION['onyen'] = $onyen;
 			}
 			else{
-				echo 'You were not logged in :(';
-                                echo $backButton;
+				echo 'You were not logged in :( <br>';
 			}
 		}
 		if(!isset($_SESSION['onyen'])){
