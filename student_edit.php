@@ -39,13 +39,11 @@
 		<?php
 			selectDB(getConnection());
 			$backButton = '<br><br><form action="adminreport.php" method="link">
-			<input type="submit" value="BACK">
+			<input type="submit" value="BACK" id="button">
 			</form>';
 			$classCode = strtoupper($_POST['classcode']);
 			$onyen = $_POST['onyen'];
 			$action = $_POST['action'];
-			
-                        echo '<br><br>';
                         
 			$class = ClassGateway::selectClassByClassCode($classCode);
 			if($class == false){

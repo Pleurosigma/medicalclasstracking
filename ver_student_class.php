@@ -40,8 +40,8 @@
                 die('Error: Please return to Login page.');
         }
         selectDB(getConnection());
-        $backButton = '<br><form action="add_student_class.php" method="link">
-                        <input type="submit" value="Back" id="addsearchbutton">
+        $backButton = '<br><br><form action="add_student_class.php" method="link">
+                        <input type="submit" value="BACK" id="button">
                         </form>';
                         
         $classCode = $_POST['classcode'];		

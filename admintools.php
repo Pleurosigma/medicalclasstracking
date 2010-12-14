@@ -29,12 +29,8 @@
 <?php
 
 if(!isset($_SESSION['adminonyen'])){
-	echo 'You were not logged in. <br />';
-	echo '
-		<form action="adminlogin.html" method="link">
-			<input type="submit" value="Back">
-		</form>
-	';
+	echo 'You were not logged in. <br>';
+	echo '<br><form action="adminlogin.html" method="link"><input type="submit" value="BACK" id="button"></form>';
 	die();
 }
 

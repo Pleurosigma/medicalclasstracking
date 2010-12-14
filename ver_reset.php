@@ -38,7 +38,7 @@
 			$password = $_POST['adminpassword'];
 			selectDB(getConnection());
                         $backButton = '<br><br><form action="resettool.php" method="link">
-			<input type="submit" value="BACK">
+			<input type="submit" value="BACK" id="button">
 			</form>';
 			if($_SESSION['adminonyen'] != $onyen){
 				die('Please log in with your own information if you wish to reset the website.' . $backButton);
