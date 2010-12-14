@@ -7,9 +7,7 @@
 <html>
 <!--
 Author: Logan Wilkerson, Hanna Palmerton
-A page to add the class to the database and verify it back to the user;
-Update Nov 7, 2010: grace period stuff added.
-Update Nov 9, 2010: merge css with new
+A page to edit the class in the database and verify it back to the user;
 -->
 <head>
 <title>Capstone</title>
@@ -26,13 +24,13 @@ Update Nov 9, 2010: merge css with new
 
 <ul id="tabmenu">
     <li><a href="index.html">Student</a></li>
-    <li><a class="active" href="class_ver.php">Administrator</a></li>
+    <li><a class="active" href="edit_ver.php">Administrator</a></li>
 </ul>
 
 <div id="content">
     
 <?php
-	if(isset($_SESSION['newclass'])){	
+	if(isset($_SESSION['editedclass'])){	
 		$resetflag = true;
 	}
 	else{
@@ -43,8 +41,7 @@ Update Nov 9, 2010: merge css with new
 	$con = getConnection();
 	selectDB($con);
 	
-	//Get Post Values
-	include("db_class_functions.php");
+        //Get Post Values
         
         //Class name
 	$className = $_POST["classname"];
@@ -84,21 +81,17 @@ Update Nov 9, 2010: merge css with new
         if($grace == 1){ $graceValue = "15 minutes"; }
         else{ $graceValue = "All day"; }
 	
+	$classCode = $_SESSION['classCode'];
+
         //Insert info into table for user to confirm
-	$classCode = "";
-	$flag = true;
-	while($flag){	
-		$classCode = getClassCode($className);
-		$flag = isClassCodeRedundant($classCode);		
-	}
 	if($resetflag){		
 		echo 'Page refresh detected. I\'m just gonna stop now.</br>';	
 	}
-	elseif(!ClassGateway::insertClass($classCode, $className, $startTime, $endTime, $credits, $faculty, $grace)){
+	elseif(!ClassGateway::editClass($classCode, $className, $startTime, $endTime, $credits, $faculty, $grace)){
 		echo "There was an error.";
 	}
 	else{
-                echo 'Class inserted.<br><br>';
+                echo 'Class edited.<br><br>';
                 echo '<table id="studentsched" class="schedule">
                         <th>Code</th><th>Session</th><th>Faculty</th><th>Start time</th><th>End time</th><th>Standard grace</th><th>Credit hours</th>
                         <tr><td>' . $classCode . '</td>
@@ -109,9 +102,6 @@ Update Nov 9, 2010: merge css with new
                         <td>' . $graceValue . '</td>
                         <td id="schedhours">' . $credits . '</td></tr>
                         </table>';
-                echo '<br><form action="add_class.php"><input type="submit" value="Add another course" id="button"></form>
-                        <input type="submit" value="Edit this course" id="button">
-                        <input type="submit" value="Delete this course" id="button">';
                 echo '<div id="addsearch"><form action="courselist.php"><input type="submit" value="RETURN TO COURSELIST" id="addsearchbutton"></form></div>';
                 $_SESSION['newclass'] = 'omg';
         }

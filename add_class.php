@@ -52,7 +52,7 @@
 <label></label><input type="submit" value="ADD COURSE" id="addsearchbutton">
 </form>
 
-<div id="dbadd"><form action="courselist.php"><input type="submit" value="RETURN TO COURSELIST" id="addsearchbutton"></form></div>
+<div id="addsearch"><form action="courselist.php"><input type="submit" value="RETURN TO COURSELIST" id="addsearchbutton"></form></div>
         
 </div>
 </body>
