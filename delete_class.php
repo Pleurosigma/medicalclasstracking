@@ -35,7 +35,7 @@ A page to delete the class from the database;
         selectDB($con); 
         
         //Class code
-        $_SESSION['classCodes'] = $_POST["boxes"];
+        $_SESSION['classCodes'] = $_POST['boxes'];
         
         echo 'Are you sure you want to delete these courses?';
         echo '<br><br><table id="studentsched" class="schedule">';
