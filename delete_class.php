@@ -69,7 +69,7 @@ A page to delete the class from the database;
             $weekDay = TM::getDayOfWeek($startTime);
             
             //Grace period
-            $grace = $class['Grace'];
+            $grace = $class['StandardGrace'];
             if($grace == 1){ $graceValue = "15 minutes"; }
             else{ $graceValue = "All day"; }
             
