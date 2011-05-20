@@ -57,17 +57,35 @@ A page to add a class into the database
         $endTime = TM::changeTo12Hr($endTime[1]);
         
         //Class time AM/PM value
-        if($startTime[1] == "AM") $checked="checked";
-        else $checked2="checked";
-        if($endTime[1] == "AM") $checked3="checked";
-        else $checked4="checked";
+        if($startTime[1] == "AM"){
+		$checked="checked";
+		$checked2="";
+	}
+        else {
+		$checked2="checked";
+		$checked="";
+	}
+        if($endTime[1] == "AM"){
+		$checked3="checked";
+		$checked4="";
+	}
+        else{
+		$checked4="checked";
+		$checked3="";
+	}
         
         $startTime = explode(":", $startTime[0]);
         $endTime = explode(":", $endTime[0]);
         
         //Class grace value
-        if($class['Grace'] == 0) $checked5="checked";
-        else $checked6="checked";
+        if($class['StandardGrace'] == 0){
+		$checked5="checked";
+		$checked6="";
+	}
+        else{
+		$checked6="checked";
+		$checked5="";
+	}
 
 echo '<br><br><table id="dbtable">
         <tr><td>EDIT A COURSE</td></tr></table><br>
