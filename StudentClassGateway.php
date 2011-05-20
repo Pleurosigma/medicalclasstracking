@@ -11,6 +11,7 @@
 		returns an array of all the student classes belong to the student
 		*/
 		public static function selectStudentClassesByOnyen($onyen){
+			$onyen = strtolower($onyen);
 			$select = "SELECT * FROM StudentClasses WHERE Onyen = '$onyen'";
 			$result = mysql_query($select);
 			while($val = mysql_fetch_array($result)){
@@ -46,6 +47,7 @@
 		deletes a student class from the database
 		*/
 		public static function deleteStudentClass($onyen, $classCode){
+			$onyen = strtolower($onyen);
 			$delete = "DELETE FROM StudentClasses WHERE Onyen = '$onyen' and ClassCode = '$classCode'";
 			return mysql_query($delete);
 		}
@@ -55,6 +57,7 @@
 		returns true if the student with the given onyen has the class code
 		*/
 		public static function studentHasClass($onyen, $classCode){
+			$onyen = strtolower($onyen);
 			$select = "SELECT * FROM StudentClasses WHERE Onyen = '$onyen' AND ClassCode = '$classCode'";
 			$result = mysql_query($select);
 			if($v = mysql_fetch_array($result))
@@ -68,6 +71,7 @@
 		inserts a student class with the given onyen and class code into the database
 		*/
 		public static function insertStudentClass($onyen, $classCode){
+			$onyen = strtolower($onyen);
 			$insert = "INSERT INTO StudentClasses (Onyen, ClassCode) VALUES ('$onyen', '$classCode')";
 			return mysql_query($insert);
 		}
